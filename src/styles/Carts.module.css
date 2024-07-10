@@ -1,0 +1,21 @@
+.carts{
+    @apply grid grid-cols-2 gap-4 p-4
+}
+.cartsRight{
+   
+    @apply flex items-center 
+    justify-center border-solid border-2
+     border-steel-blue-500 rounded-md
+     text-steel-blue-600
+}
+.cartsLink{
+ 
+    @apply flex items-center justify-center gap-2 p-2 md:p-4 
+
+}
+.cartsLeft{
+@apply flex items-center justify-end
+}
+.cartsTitle{
+    text-align: left;
+}
