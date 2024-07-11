@@ -15,16 +15,11 @@ export default function Navbar() {
                 <ul className={style.navbarList}>
                     <li className={style.navbarItem}>
                         <Link href={'/carts'} className={style.navbarLink}>
-                            <FaCreditCard />
-                            <span>کارت ها</span>
+                            <FaCreditCard className={style.navbarIcon} />
+                            <span>کارت </span>
                         </Link>
                     </li>
-                    <li className={style.navbarItem}>
-                        <Link href={'/categories'} className={style.navbarLink}>
-                            <BiSolidCategory />
-                            <span>دسته بندی ها</span>
-                        </Link>
-                    </li>
+                  
 
                     <li className={style.navbarItem}>
 
@@ -34,15 +29,10 @@ export default function Navbar() {
                         </span>
 
                     </li>
-                    <li className={style.navbarItem}>
-                        <Link href={'/report'} className={style.navbarLink}>
-                            <HiDocumentReport />
-                            <span>گزارش</span>
-                        </Link>
-                    </li>
+                   
                     <li className={style.navbarItem}>
                         <Link href={'/'} className={style.navbarLink}>
-                            <TiHome />
+                            <TiHome className={style.navbarIcon} />
                             <span>خانه</span>
                         </Link>
                     </li>

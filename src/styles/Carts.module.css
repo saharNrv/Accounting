@@ -1,5 +1,5 @@
 .carts{
-    @apply grid grid-cols-2 gap-4 p-4
+    @apply  flex flex-row-reverse items-center justify-between py-6 px-2 
 }
 .cartsRight{
    

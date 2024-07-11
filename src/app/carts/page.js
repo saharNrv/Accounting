@@ -1,3 +1,4 @@
+"use client"
 import Topbar from '@/components/module/topbar/Topbar';
 import Link from 'next/link';
 import React from 'react';
@@ -12,7 +13,7 @@ function carts() {
             <Topbar title='کارت ها' />
             <div className={style.carts}>
                 <div className={style.cartsRight}>
-                    <Link href={'/addcart'} className={style.cartsLink}>
+                    <Link href={'/addnewcart'} className={style.cartsLink}>
                         <span>افزودن کارت جدید</span>
                         <FaPlus />
                     </Link>
@@ -23,7 +24,8 @@ function carts() {
 
             </div>
 
-          <Cart/>
+            <Cart title={'بلو بانک'} cartnumber={'3789950003887747'} />
+            <Cart title={'بلو بانک'} cartnumber={'3789950003887747'} />
 
 
 
