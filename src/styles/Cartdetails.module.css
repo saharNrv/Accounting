@@ -1,0 +1,20 @@
+.cartDetailsInfowrap {
+  @apply flex flex-col items-center 
+    justify-center p-[20px] border-2 
+    border-solid border-steel-blue-200;
+}
+.cartDetailsImgWrap {
+  @apply w-[50px] h-[50px];
+}
+.cartDetailsImg {
+  @apply w-full h-full rounded-[10px] object-cover border-2 border-solid border-steel-blue-200;
+}
+.cartDetailsInfo {
+  @apply mt-3 flex flex-col items-center justify-center gap-1;
+}
+.cartDetailsInfo h3 {
+  @apply text-steel-blue-500;
+}
+.cartDetailsInfo p {
+  color: #a1a1a1;
+}
