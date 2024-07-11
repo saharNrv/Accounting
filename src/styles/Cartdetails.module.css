@@ -18,3 +18,19 @@
 .cartDetailsInfo p {
   color: #a1a1a1;
 }
+
+.showExpenses {
+  padding: 20px;
+}
+.showExpensesTitle {
+  @apply text-steel-blue-700;
+}
+.showExpensesBtnWrap {
+  @apply flex items-center justify-between gap-3 my-[20px];
+}
+.showExpensesBtn1 {
+  @apply w-full p-4 border-none flex items-center justify-between rounded-[5px];
+}
+.showExpensesBtn2 {
+  @apply w-full p-4 border-none rounded-[5px] bg-shamrock-400 text-white;
+}

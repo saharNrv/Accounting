@@ -1,6 +1,7 @@
 import Topbar from '@/components/module/topbar/Topbar';
 import React from 'react';
 import style from '@/styles/Cartdetails.module.css' 
+import { IoMdArrowDropdown } from "react-icons/io";
 
 export default function cartDetails() {
   return (
@@ -23,8 +24,11 @@ export default function cartDetails() {
       {/* Show expenses */}
       <div className={style.showExpenses}>
         <h2 className={style.showExpensesTitle}>نمایش مخارج</h2>
-        <div>
-            <button className={style.showExpensesBtn1}>ماه جاری</button>
+        <div className={style.showExpensesBtnWrap}>
+            <button className={style.showExpensesBtn1}>
+                <span>ماه جاری</span>
+                <IoMdArrowDropdown/>
+                </button>
             <button className={style.showExpensesBtn2}>خروجی اکسل</button>
         </div>
 
