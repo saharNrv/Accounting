@@ -8,8 +8,10 @@ import Cart from '@/components/module/cart/Cart';
 
 
 function carts() {
+    // * Renders the carts component with a Topbar, new cart link, and existing Cart components.
     return (
         <>
+            {/* tobar component */}
             <Topbar title='کارت ها' />
             <div className={style.carts}>
                 <div className={style.cartsRight}>
@@ -23,7 +25,7 @@ function carts() {
                 </div>
 
             </div>
-
+            {/*  cart component inclusive titile and cartnumber props  */}
             <Cart title={'بلو بانک'} cartnumber={'3789950003887747'} />
             <Cart title={'بلو بانک'} cartnumber={'3789950003887747'} />
 

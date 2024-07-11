@@ -1,6 +1,9 @@
 .topbar{
-@apply w-full h-16 border-solid border-2
+@apply w-full  border-solid border-2
  border-steel-blue-200 flex items-center justify-center
- text-steel-blue-500;
+ text-steel-blue-500 py-6;
 
+}
+.topbar h1{
+    font-size: 20px;
 }

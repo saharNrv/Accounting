@@ -2,8 +2,6 @@ import React from 'react';
 import style from './Navbar.module.css';
 import Link from 'next/link';
 import { TiHome } from "react-icons/ti";
-import { HiDocumentReport } from "react-icons/hi";
-import { BiSolidCategory } from "react-icons/bi";
 import { FaCreditCard } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 

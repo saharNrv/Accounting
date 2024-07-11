@@ -1,0 +1,50 @@
+.addnewcart {
+  position: relative;
+}
+
+.backBtn {
+  @apply w-10 h-10 flex items-center 
+    justify-center text-xl  
+    rounded-full text-steel-blue-700
+    border-solid border-2 border-steel-blue-300
+    absolute top-[-60px] right-4 bg-inherit;
+}
+.backBtn a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .formWrapper{
+    background-color: pink;
+    padding: 15px;
+} */
+.form{
+    width: 100%;
+    padding: 20px;
+
+}
+.inputWrap{
+display: flex;
+flex-direction: column;
+padding: 5px;
+}
+.inputWrap label{
+    @apply text-slate-600
+}
+.inputWrap input{
+    margin: 10px;
+    padding: 12px 10px;
+    border: none;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+
+}
+.formBtn{
+   padding: 5px;
+   margin: 10px;
+}
+.formBtn button{
+   
+    @apply w-full p-[10px] border-none rounded-[5px]
+    bg-steel-blue-600 text-white 
+}
