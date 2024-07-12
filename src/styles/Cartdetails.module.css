@@ -1,7 +1,7 @@
 .cartDetailsInfowrap {
   @apply flex flex-col items-center 
-    justify-center p-[20px] border-2 
-    border-solid border-steel-blue-200;
+    justify-center p-[20px] ;
+    /* border-bottom: 2px solid red */
 }
 .cartDetailsImgWrap {
   @apply w-[50px] h-[50px];
@@ -13,17 +13,17 @@
   @apply mt-3 flex flex-col items-center justify-center gap-1;
 }
 .cartDetailsInfo h3 {
-  @apply text-steel-blue-500;
+  @apply text-steel-blue-500 text-[12px];
 }
 .cartDetailsInfo p {
   color: #a1a1a1;
 }
 
 .showExpenses {
-  padding: 20px;
+ @apply px-[20px] py-[3px]
 }
 .showExpensesTitle {
-  @apply text-steel-blue-700;
+  @apply text-steel-blue-700 text-[14px];
 }
 .showExpensesBtnWrap {
   @apply flex items-center justify-between gap-3 my-[20px];
@@ -32,5 +32,15 @@
   @apply w-full p-4 border-none flex items-center justify-between rounded-[5px];
 }
 .showExpensesBtn2 {
-  @apply w-full p-4 border-none rounded-[5px] bg-shamrock-400 text-white;
+  @apply w-full p-4 border-none rounded-[5px] bg-red-400 text-white flex items-center justify-center gap-2;
 }
+.showAddExpenses{
+    @apply bg-steel-blue-800 mx-[20px] my-[5px] py-4 px-6 rounded-[5px] text-white flex items-center justify-between
+}
+.showAddExpensesTitle{
+
+}
+.showAddExpensesPrice{
+
+}
+      

@@ -26,8 +26,10 @@ function carts() {
 
             </div>
             {/*  cart component inclusive titile and cartnumber props  */}
+            
             <Cart title={'بلو بانک'} cartnumber={'3789950003887747'} />
-            <Cart title={'بلو بانک'} cartnumber={'3789950003887747'} />
+            
+            {/* <Cart title={'بلو بانک'} cartnumber={'3789950003887747'} /> */}
 
 
 

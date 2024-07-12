@@ -2,6 +2,8 @@ import Topbar from '@/components/module/topbar/Topbar';
 import React from 'react';
 import style from '@/styles/Cartdetails.module.css' 
 import { IoMdArrowDropdown } from "react-icons/io";
+import { MdDelete } from "react-icons/md";
+import Box from '@/components/module/box/Box';
 
 export default function cartDetails() {
   return (
@@ -9,7 +11,7 @@ export default function cartDetails() {
     {/* tobar component It will get the title props from the data */}
       <Topbar title={'بلو کارت'}/>
       {/* cart details */}
-      <div className={style.cartDetailsInfowrap}>
+      <div className={style.cartDetailsInfowrap} >
         <div className={style.cartDetailsImgWrap}>
             <img src="https://jackblack.ir/wp-content/uploads/2021/06/blu-99-09-18-1.jpg" className={style.cartDetailsImg}  alt="img" />
         </div>
@@ -29,11 +31,21 @@ export default function cartDetails() {
                 <span>ماه جاری</span>
                 <IoMdArrowDropdown/>
                 </button>
-            <button className={style.showExpensesBtn2}>خروجی اکسل</button>
+            <button className={style.showExpensesBtn2}>
+                <span>حذف کارت</span>
+                <MdDelete/> 
+            </button>
         </div>
 
       </div>
-      
+      {/* show add expenses */}
+      <div className={style.showAddExpenses}>
+        <p className={style.showAddExpensesTitle}>جمع مخارج</p>
+        <p className={style.showAddExpensesPrice}>20000 تومان</p>
+
+      </div>
+      {/* box */}
+      <Box/>
     </>
   );
 }
