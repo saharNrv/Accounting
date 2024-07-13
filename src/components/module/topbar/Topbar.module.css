@@ -1,7 +1,8 @@
 .topbar{
-@apply w-full  border-solid border-2
- border-steel-blue-200 flex items-center justify-center
+@apply w-full 
+  flex items-center justify-center
  text-steel-blue-500 py-6 relative;
+ border-bottom: 2px solid #cbe0f2;
 
 }
 .topbar h1{
