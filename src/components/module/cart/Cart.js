@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Cart.module.css';
 import Link from 'next/link';
 
-function Cart({ title, cartnumber }) {
+function Cart({ title, cartnumber,cartID }) {
     return (
 
         <div className={style.cart}>
