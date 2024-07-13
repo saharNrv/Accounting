@@ -1,7 +1,21 @@
+.cartDetailsWrapper {
+  position: relative;
+}
+.cartDetailsBG {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: block
+}
+.cartDetailsBGshow{
+  display: block;
+}
+
 .cartDetailsInfowrap {
   @apply flex flex-col items-center 
-    justify-center p-[20px] ;
-    /* border-bottom: 2px solid red */
+    justify-center p-[20px];
+  /* border-bottom: 2px solid red */
 }
 .cartDetailsImgWrap {
   @apply w-[50px] h-[50px];
@@ -20,7 +34,7 @@
 }
 
 .showExpenses {
- @apply px-[20px] py-[3px]
+  @apply px-[20px] py-[3px];
 }
 .showExpensesTitle {
   @apply text-steel-blue-700 text-[14px];
@@ -34,13 +48,58 @@
 .showExpensesBtn2 {
   @apply w-full p-4 border-none rounded-[5px] bg-red-400 text-white flex items-center justify-center gap-2;
 }
-.showAddExpenses{
-    @apply bg-steel-blue-800 mx-[20px] my-[5px] py-4 px-6 rounded-[5px] text-white flex items-center justify-between
+.showAddExpenses {
+  @apply bg-steel-blue-800 mx-[20px] my-[5px] py-4 px-6 rounded-[5px] text-white flex items-center justify-between;
 }
-.showAddExpensesTitle{
-
+.showAddExpensesTitle {
 }
-.showAddExpensesPrice{
-
+.showAddExpensesPrice {
 }
-      
+/* cart details modal */
+.cartDetailsModalWrap {
+  display: none;
+}
+.cartDetailsModalWrapShow{
+  display: block;
+}
+.cartDetailsModal {
+  background-color: white;
+  position: fixed;
+  width: 100%;
+}
+.cartDetailsModalTitleWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.cartDetailsModalTitle {
+}
+.cartDetailsModalClose {
+}
+.cartDetailsModalInfowrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+.cartDetailsModalInfowrap button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.cartDetailsModalBtn1,
+.cartDetailsModalBtn2 {
+  border: none;
+  border-radius: 5px;
+}
+.cartDetailsModalBtn1 {
+  background-color: #ccc;
+  color: #8c8c8c;
+}
+.cartDetailsModalBtn2 {
+  background-color: inherit;
+  border: 1px solid #ccc;
+  color: #8c8c8c;
+}
