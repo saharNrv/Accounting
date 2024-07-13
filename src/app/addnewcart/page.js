@@ -2,7 +2,6 @@
 import React from 'react';
 import style from '@/styles/Addnewcart.module.css'
 import Topbar from '@/components/module/topbar/Topbar';
-import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 export default function page() {
@@ -14,12 +13,7 @@ export default function page() {
             {/* topbar component */}
             <Topbar title={'ایجاد کارت جدید'} />
             <div className={style.addnewcart} >
-                {/* back button */}
-                <div className={style.backBtn}>
-                    <Link href={'/carts'}>
-                        <FaArrowRight />
-                    </Link>
-                </div>
+               
 
                 {/* <div className={style.formWrapper}> */}
                     <form className={style.form}>

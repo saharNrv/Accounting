@@ -26,7 +26,7 @@ export default function cartDetails() {
 
             <div className={showModal ? style.cartDetailsBG : ''}></div>
             {/* tobar component It will get the title props from the data */}
-            <Topbar title={'بلو کارت'} />
+            <Topbar title={'بلو کارت'} showBtn={true} linkBtnUrl={'/carts'}/>
             {/* cart details */}
             <div className={style.cartDetailsInfowrap} >
                 <div className={style.cartDetailsImgWrap}>

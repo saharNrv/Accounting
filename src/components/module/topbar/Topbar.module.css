@@ -1,9 +1,22 @@
 .topbar{
 @apply w-full  border-solid border-2
  border-steel-blue-200 flex items-center justify-center
- text-steel-blue-500 py-6;
+ text-steel-blue-500 py-6 relative;
 
 }
 .topbar h1{
     font-size: 20px;
 }
+.backBtn {
+   border: 2px solid rgb(65 107 180);
+    @apply bg-steel-blue-500 absolute right-[20px] w-[30px] h-[30px];
+    
+   @apply rounded-full  flex items-center justify-center
+   
+  }
+  .backBtn a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @apply text-steel-blue-900
+  }

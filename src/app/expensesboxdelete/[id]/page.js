@@ -7,7 +7,7 @@ import { MdDelete } from 'react-icons/md';
 export default function Expensesboxdelete() {
     return (
         <>
-            <Topbar title={'12:16 - 1403/4/22'} />
+            <Topbar title={'12:16 - 1403/4/22'} showBtn={true} linkBtnUrl={'/cartdetails/1'} />
             <div className={style.expensesboxdelete}>
                 <div className={style.expensesboxdeleteInfon}>
                     <p className={style.expensesboxdeleteTitle}>مبلغ</p>

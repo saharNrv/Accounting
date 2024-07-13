@@ -12,7 +12,7 @@ function carts() {
     return (
         <>
             {/* tobar component */}
-            <Topbar title='کارت ها' />
+            <Topbar title='کارت ها' showBtn={false}  />
             <div className={style.carts}>
                 <div className={style.cartsRight}>
                     <Link href={'/addnewcart'} className={style.cartsLink}>
