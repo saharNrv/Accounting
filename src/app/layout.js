@@ -1,5 +1,6 @@
 import Navbar from "@/components/module/navbar/Navbar";
 import "./globals.css";
+import { CultureProvider } from "../../context/CultureProvider";
 
 
 export const metadata = {
@@ -11,9 +12,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa">
       <body >
-        <Navbar/>
-        {children}
+        <CultureProvider>
+          <Navbar />
+          {children}
 
+        </CultureProvider>
       </body>
     </html>
   );

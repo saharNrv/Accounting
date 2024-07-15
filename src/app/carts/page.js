@@ -5,6 +5,8 @@ import React from 'react';
 import style from '@/styles/Carts.module.css'
 import { FaPlus } from "react-icons/fa6";
 import Cart from '@/components/module/cart/Cart';
+import { Translate } from '../../../context/CultureProvider';
+import { Dictionary } from '../../../lib/dictionary';
 
 
 function carts() {
@@ -21,7 +23,7 @@ function carts() {
                     </Link>
                 </div>
                 <div className={style.cartsLeft}>
-                    <h2 className={style.cartsTitle}>کارت های شما</h2>
+                    <h2 className={style.cartsTitle}>{Translate(Dictionary.YOUR_CART)}</h2>
                 </div>
 
             </div>

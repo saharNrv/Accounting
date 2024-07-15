@@ -6,6 +6,8 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import Box from '@/components/module/box/Box';
 import Modal from '@/components/module/modal/Modal';
+import { Translate } from '../../../../context/CultureProvider';
+import { Dictionary } from '../../../../lib/dictionary';
 
 export default function cartDetails() {
 
@@ -27,14 +29,14 @@ export default function cartDetails() {
 
             <div className={showModal ? style.cartDetailsBG : ''}></div>
             {/* tobar component It will get the title props from the data */}
-            <Topbar title={'بلو کارت'} showBtn={true} linkBtnUrl={'/carts'}/>
+            <Topbar title={'بلو کارت'} showBtn={true} linkBtnUrl={'/carts'} />
             {/* cart details */}
             <div className={style.cartDetailsInfowrap} >
                 <div className={style.cartDetailsImgWrap}>
                     <img src="https://jackblack.ir/wp-content/uploads/2021/06/blu-99-09-18-1.jpg" className={style.cartDetailsImg} alt="img" />
                 </div>
                 <div className={style.cartDetailsInfo}>
-                    <h3>بلو بانک</h3>
+                    <h3>{Translate(Dictionary.BANKS)}</h3>
                     <p>3789950003887747</p>
 
                 </div>
@@ -65,14 +67,14 @@ export default function cartDetails() {
             {/* box */}
             <Box />
             {/* cart details modal */}
-           
+
             <Modal show={showModal} onClose={closeModalHandler} title={'نمایش مخارج'}>
 
-            <div className={style.modalBtnWrap}>
-                        <button className={style.ModalBtn1}>ماه جاری</button>
-                        <button className={style.ModalBtn2}>کل مخارج</button>
+                <div className={style.modalBtnWrap}>
+                    <button className={style.ModalBtn1}>ماه جاری</button>
+                    <button className={style.ModalBtn2}>کل مخارج</button>
 
-                    </div>
+                </div>
             </Modal>
         </div>
     );

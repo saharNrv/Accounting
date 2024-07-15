@@ -35,3 +35,11 @@
 
     @apply p-3 rounded-md  w-full flex items-center justify-center gap-2 text-red-500 border-none
 }
+
+.expensesboxdeleteModalBtn{
+  width: 100%;
+  background-color: #666;
+}
+
+.expensesboxdeleteModalBtn1{}
+.expensesboxdeleteModalBtn2{}
