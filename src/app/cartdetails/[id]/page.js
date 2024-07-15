@@ -5,6 +5,7 @@ import style from '@/styles/Cartdetails.module.css'
 import { IoMdArrowDropdown } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import Box from '@/components/module/box/Box';
+import Modal from '@/components/module/modal/Modal';
 
 export default function cartDetails() {
 
@@ -24,7 +25,7 @@ export default function cartDetails() {
     return (
         <div className={style.cartDetailsWrapper}>
 
-            <div className={showModal ? style.cartDetailsBG : ''}></div>
+            {/* <div className={showModal ? style.cartDetailsBG : ''}></div> */}
             {/* tobar component It will get the title props from the data */}
             <Topbar title={'بلو کارت'} showBtn={true} linkBtnUrl={'/carts'}/>
             {/* cart details */}
@@ -44,8 +45,8 @@ export default function cartDetails() {
             <div className={style.showExpenses}>
                 <h2 className={style.showExpensesTitle}>نمایش مخارج</h2>
                 <div className={style.showExpensesBtnWrap}>
-                    <button className={style.showExpensesBtn1}>
-                        <span onClick={showModalHandler}>ماه جاری</span>
+                    <button className={style.showExpensesBtn1} onClick={showModalHandler}>
+                        <span >ماه جاری</span>
                         <IoMdArrowDropdown />
                     </button>
                     <button className={style.showExpensesBtn2}>
@@ -64,7 +65,7 @@ export default function cartDetails() {
             {/* box */}
             <Box />
             {/* cart details modal */}
-            <div className={!showModal ? style.cartDetailsModalWrap : style.cartDetailsModalWrapShow}>
+            {/* <div className={!showModal ? style.cartDetailsModalWrap : style.cartDetailsModalWrapShow}>
                 <div className={style.cartDetailsModal}>
 
                     <div className={style.cartDetailsModalTitleWrap}>
@@ -79,7 +80,8 @@ export default function cartDetails() {
                     </div>
 
                 </div>
-            </div>
+            </div> */}
+            <Modal show={showModal} onClose={closeModalHandler}/>
         </div>
     );
 }
