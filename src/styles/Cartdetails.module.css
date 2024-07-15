@@ -57,51 +57,18 @@
 .showAddExpensesPrice {
 }
 /* cart details modal */
-.cartDetailsModalWrap {
-  display: none;
-}
-.cartDetailsModalWrapShow{
-  display: block;
-}
-.cartDetailsModal {
-  background-color: white;
-  position: fixed;
+.modalBtnWrap{
   width: 100%;
-  z-index: 2;
-}
-.cartDetailsModalTitleWrap {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-}
-.cartDetailsModalTitle {
-}
-.cartDetailsModalClose {
-}
-.cartDetailsModalInfowrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  padding: 10px 20px;
+  margin-top: 20px;
+
 }
-.cartDetailsModalInfowrap button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+.ModalBtn1{
+
+  @apply w-full py-4 px-3 bg-gray-300  border-none text-gray-500 rounded-md mb-4
 }
-.cartDetailsModalBtn1,
-.cartDetailsModalBtn2 {
-  border: none;
-  border-radius: 5px;
-}
-.cartDetailsModalBtn1 {
-  background-color: #ccc;
-  color: #8c8c8c;
-}
-.cartDetailsModalBtn2 {
-  background-color: inherit;
-  border: 1px solid #ccc;
-  color: #8c8c8c;
+.ModalBtn2{
+  @apply w-full py-4 px-3 bg-inherit border-2 border-gray-300   text-gray-500 rounded-md mb-4
+
 }

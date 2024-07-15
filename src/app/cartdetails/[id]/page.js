@@ -25,7 +25,7 @@ export default function cartDetails() {
     return (
         <div className={style.cartDetailsWrapper}>
 
-            {/* <div className={showModal ? style.cartDetailsBG : ''}></div> */}
+            <div className={showModal ? style.cartDetailsBG : ''}></div>
             {/* tobar component It will get the title props from the data */}
             <Topbar title={'بلو کارت'} showBtn={true} linkBtnUrl={'/carts'}/>
             {/* cart details */}
@@ -65,23 +65,15 @@ export default function cartDetails() {
             {/* box */}
             <Box />
             {/* cart details modal */}
-            {/* <div className={!showModal ? style.cartDetailsModalWrap : style.cartDetailsModalWrapShow}>
-                <div className={style.cartDetailsModal}>
+           
+            <Modal show={showModal} onClose={closeModalHandler} title={'نمایش مخارج'}>
 
-                    <div className={style.cartDetailsModalTitleWrap}>
-                        <p className={style.cartDetailsModalTitle}>نمایش مخارج</p>
-                        <p className={style.cartDetailsModalClose} onClick={closeModalHandler}>x</p>
-
-                    </div>
-                    <div className={style.cartDetailsModalInfowrap}>
-                        <button className={style.cartDetailsModalBtn1}>ماه جاری</button>
-                        <button className={style.cartDetailsModalBtn2}>کل مخارج</button>
+            <div className={style.modalBtnWrap}>
+                        <button className={style.ModalBtn1}>ماه جاری</button>
+                        <button className={style.ModalBtn2}>کل مخارج</button>
 
                     </div>
-
-                </div>
-            </div> */}
-            <Modal show={showModal} onClose={closeModalHandler}/>
+            </Modal>
         </div>
     );
 }
