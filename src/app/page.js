@@ -1,34 +1,39 @@
-"use client"
+import React from 'react';
+import style from '@/styles/Home.module.css'
+import { FaUser } from 'react-icons/fa';
+import { IoSettings } from "react-icons/io5";
+import { FaChartPie } from "react-icons/fa6";
 
-import Navbar from '@/components/module/navbar/Navbar';
-import Topbar from '@/components/module/topbar/Topbar';
-import React, { useContext } from 'react';
-import { CultureProviderContext, Translate } from '../../context/CultureProvider';
-import { Dictionary } from '../../lib/dictionary';
-
-const cultureList = [
-  {
-    rtl: true,
-    local: 'fa',
-    displayName: 'فارسی'
-  },
-  {
-    rtl: false,
-    local: 'en',
-    displayName: 'english'
-  }
-]
 export default function page() {
+    return (
+        <div className={style.homeWrapper}>
+            {/* home navbar */}
+            <div className={style.homeNav}>
+                {/* home navbar right */}
+                <div className={style.homeNavRight}>
+                    <div className={style.homeNavIconWrap}>
+                        <FaUser className={style.homeNavIcon} />
+                    </div>
+                    <div className={style.homeNavInfo}>
+                        <p className={style.homeNavName}>سحر نوری</p>
+                        <p className={style.homeNavPhone}>09124568956</p>
+                    </div>
+                </div>
+                {/* home navbar left */}
+                <div className={style.homeNavLeft}>
+                    <div className={style.homeNavLeftIconWrap}>
+                        <FaChartPie />
+                        <IoSettings />
 
-  const { setCulture } = useContext(CultureProviderContext)
+                    </div>
+                </div>
 
-  return (
-    <>
-      <button onClick={() => setCulture(cultureList[0])}>فارسی</button>
-      <button onClick={() => setCulture(cultureList[1])}>english</button>
-      <h1>{Translate(Dictionary.HELLO)}</h1>
 
-    </>
-  );
+            </div>
+                <div className={style.homeNavPricce}>
+                    <h1>20000 تومان</h1>
+                </div>
+
+        </div>
+    );
 }
-
