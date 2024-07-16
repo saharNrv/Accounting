@@ -19,7 +19,7 @@
   @apply flex flex-col items-center;
 }
 .homeNavName {
-   @apply text-steel-blue-800
+  @apply text-steel-blue-800;
 }
 .homeNavPhone {
   font-size: 12px;
@@ -27,13 +27,30 @@
 }
 .homeNavLeft {
 }
-.homeNavLeftIconWrap{
-    @apply flex items-center gap-3 text-steel-blue-800;
+.homeNavLeftIconWrap {
+  @apply flex items-center gap-3 text-steel-blue-800;
 }
-.homeNavPricce{
-    @apply text-steel-blue-800 text-center p-[10px] mt-4
+.homeNavPricce {
+  @apply text-steel-blue-800 text-center p-[20px] my-[25px] ;
+
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.4px);
+  -webkit-backdrop-filter: blur(7.4px);
 }
-.homeNavPricce h1{
-    font-size: 18px;
-    border: 2px solid #ccc;
+.homeNavPricce h1 {
+  font-size: 18px;
+}
+.recentExpenses{
+    @apply flex items-center justify-between px-[20px] py-3 my-4
+}
+.recentExpenses h3{
+    @apply text-steel-blue-800 text-[16px] 
+}
+.recentExpenses a{
+    @apply text-gray-400 text-[14px] 
+}
+.homeBox{
+    margin-top: 23px;
 }
