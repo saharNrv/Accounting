@@ -2,10 +2,10 @@
    padding-bottom: 70px
 }
 .settingInfoWrap {
-  @apply flex flex-col items-center justify-center p-[20px];
+  @apply flex flex-col items-center justify-center p-[20px] ;
 }
 .settingIconWrap {
-  @apply w-[75px] h-[75px] rounded-lg my-4 bg-steel-blue-100 flex items-center justify-center;
+  @apply w-20 h-20  rounded-lg my-4 bg-steel-blue-100 flex items-center justify-center;
 }
 .settingIcon {
   @apply text-[30px] text-gray-500;
@@ -35,4 +35,29 @@
 }
 .settingUserIconText{
     color: #5e5d5d;
+}
+
+/* modal children style */
+.logoutwrraper{
+
+}
+.logoutSubTitle{
+  margin: 20px 0px;
+  color: #858484;
+
+}
+.logoutBtnWrap{
+  @apply flex items-center justify-center gap-4 my-4
+
+}
+.logoutBtn1,.logoutBtn2{
+  @apply w-full py-4
+
+}
+.logoutBtn1{
+  @apply border-2 border-solid border-steel-blue-600 text-steel-blue-600 rounded-lg bg-inherit
+
+}
+.logoutBtn2{
+  @apply bg-steel-blue-500 text-white border-none rounded-lg
 }

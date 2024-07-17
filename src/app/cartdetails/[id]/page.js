@@ -8,6 +8,7 @@ import Box from '@/components/module/box/Box';
 import Modal from '@/components/module/modal/Modal';
 import { Translate } from '../../../../context/CultureProvider';
 import { Dictionary } from '../../../../lib/dictionary';
+import Bg from '@/components/module/bg/Bg';
 
 export default function cartDetails() {
 
@@ -26,8 +27,9 @@ export default function cartDetails() {
 
     return (
         <div className={style.cartDetailsWrapper}>
+            {/* bg component */}
+            <Bg showModal={showModal}/>
 
-            <div className={showModal ? style.cartDetailsBG : ''}></div>
             {/* tobar component It will get the title props from the data */}
             <Topbar title={'بلو کارت'} showBtn={true} linkBtnUrl={'/carts'} />
             {/* cart details */}

@@ -4,6 +4,7 @@ import style from '@/styles/Addnewcart.module.css'
 import Topbar from '@/components/module/topbar/Topbar';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Input from '@/components/module/inputwrap/Input';
 export default function page() {
 
 
@@ -17,18 +18,13 @@ export default function page() {
 
                 {/* <div className={style.formWrapper}> */}
                     <form className={style.form}>
-                        <div className={style.inputWrap}>
-                            <label>بانک</label>
-                            <input type="text" placeholder=' بانک را انتخاب کنید' />
-                        </div>
-                        <div className={style.inputWrap}>
-                            <label>شماره کارت</label>
-                            <input type="text" placeholder='شماره کارت را وارد کنید' />
-                        </div>
-                        <div className={style.inputWrap}>
-                            <label>نام</label>
-                            <input type="text" placeholder='نام کارت را وارد کنید' />
-                        </div>
+                        <Input
+                          title={'بانک'}
+                          placeholder={'بانک را انتخاب کنید'}
+                        />
+                        <Input title={'شماره کارت'} placeholder={'شماره کارت را وارد کنید'} />
+                        <Input title={'نام'} placeholder={'نام کارت را وارد کنید'}/>
+                        
                         <div className={style.formBtn}>
 
                         <button >تایید</button>
