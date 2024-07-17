@@ -25,8 +25,12 @@ export default function page() {
                     {/* home navbar left */}
                     <div className={style.homeNavLeft}>
                         <div className={style.homeNavLeftIconWrap}>
+                            <Link href={'/'}>
                             <FaChartPie />
+                            </Link>
+                            <Link href={'/settings'}>
                             <IoSettings />
+                            </Link>
 
                         </div>
                     </div>
