@@ -10,7 +10,7 @@ import { Translate } from '../../../../context/CultureProvider';
 import { Dictionary } from '../../../../lib/dictionary';
 import Bg from '@/components/module/bg/Bg';
 
-export default function cartDetails() {
+export default function CartDetails() {
 
     const [showModal, setShowModal] = useState(false)
 

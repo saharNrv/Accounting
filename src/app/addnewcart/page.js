@@ -5,7 +5,7 @@ import Topbar from '@/components/module/topbar/Topbar';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Input from '@/components/module/inputwrap/Input';
-export default function page() {
+export default function AddNewCart() {
 
 
 

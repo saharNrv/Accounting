@@ -12,12 +12,19 @@ import { MdLanguage } from "react-icons/md";
 import Modal from '@/components/module/modal/Modal';
 import Bg from '@/components/module/bg/Bg';
 
-export default function settings() {
+export default function Settings() {
     const [showModal, setShowModal] = useState(false)
+    const [showModalLanguage, setShowModalLanguage] = useState(false)
 
     //  A function that shows a modal.
     const showModalHandler = () => {
         setShowModal(true)
+
+    }
+    //  A function that shows a modal Language.
+    
+    const showLanguageModalHandler= ()=>{
+        setShowModalLanguage(true)
 
     }
     //  A function that close a modal.
@@ -25,10 +32,15 @@ export default function settings() {
 
         setShowModal(false)
     }
+    //  A function that close a modal Language.
+    const closeModalHandlerLanguage = () => {
+
+        setShowModalLanguage(false)
+    }
     return (
         <div className={style.settingsWrap}>
             {/* bg component */}
-            <Bg showModal={showModal}/>
+            {/* <Bg showModal={showModal}/> */}
             {/* tobar component */}
             <Topbar title={'تنظیمات'} showBtn={true} linkBtnUrl={'/'} />
             {/* setting info */}
@@ -78,7 +90,7 @@ export default function settings() {
                     </div>
                     <IoIosArrowBack />
                 </Link>
-                <Link href={'/'} className={style.settingUserLink}>
+                <Link href={''} onClick={showLanguageModalHandler} className={style.settingUserLink}>
                     <div className={style.settingUserIconWrap}>
                         <MdLanguage />
                         <p className={style.settingUserIconText}>ویرایش زبان</p>
@@ -89,7 +101,7 @@ export default function settings() {
 
             </div>
 
-            {/* show modal */}
+            {/* show modal logout */}
             <Modal show={showModal} onClose={closeModalHandler} title={'خروج از حساب کاربری'}>
                 <div className={style.logoutwrraper}>
                 <p className={style.logoutSubTitle}>ایا میخواهید از حساب کاربری خارج شوید؟</p>
@@ -99,6 +111,10 @@ export default function settings() {
                 <button className={style.logoutBtn2}>تایید</button>
                 </div>
                 </div>
+
+            </Modal>
+            {/* show modal language */}
+            <Modal show={showModalLanguage} onClose={closeModalHandlerLanguage} title={'zaban'}>
 
             </Modal>
         </div>

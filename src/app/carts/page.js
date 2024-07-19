@@ -9,7 +9,7 @@ import { Translate } from '../../../context/CultureProvider';
 import { Dictionary } from '../../../lib/dictionary';
 
 
-function carts() {
+function Carts() {
     // * Renders the carts component with a Topbar, new cart link, and existing Cart components.
     return (
         <>
@@ -37,4 +37,4 @@ function carts() {
         </>
     );
 }
-export default carts;
+export default Carts;

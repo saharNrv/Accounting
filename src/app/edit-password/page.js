@@ -3,7 +3,7 @@ import style from '@/styles/Edit-password.module.css'
 import Topbar from '@/components/module/topbar/Topbar';
 import Input from '@/components/module/inputwrap/Input';
 
-export default function page() {
+export default function EditPassword() {
     return (
         <div className={style.editPassword}>
             <Topbar title={'تغییر رمز عبور'} showBtn={true} linkBtnUrl={'/settings'} />

@@ -3,7 +3,7 @@ import style from '@/styles/Edit-user-account.module.css'
 import Topbar from '@/components/module/topbar/Topbar';
 import Input from '@/components/module/inputwrap/Input';
 
-export default function page() {
+export default function EditUserAccount() {
     return (
         <div className={style.editUser}>
             <Topbar title={'ویرایش حساب کاربری'} showBtn={true} linkBtnUrl={'/settings'} />

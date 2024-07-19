@@ -6,7 +6,7 @@ import { FaChartPie } from "react-icons/fa6";
 import Link from 'next/link';
 import Box from '@/components/module/box/Box';
 
-export default function page() {
+export default function Page() {
     return (
         <>
             <div className={style.homeWrapper}>
