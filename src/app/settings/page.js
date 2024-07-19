@@ -114,7 +114,7 @@ export default function Settings() {
 
             </Modal>
             {/* show modal language */}
-            <Modal show={showModalLanguage} onClose={closeModalHandlerLanguage} title={'zaban'}>
+            <Modal show={showModalLanguage} onClose={closeModalHandlerLanguage}>
 
             </Modal>
         </div>
