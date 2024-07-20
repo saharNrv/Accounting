@@ -21,10 +21,11 @@ export default function Navbar() {
 
                     <li className={style.navbarItem}>
 
-
+                       <Link href={'/new-expense'} className={style.navbarLink}>
                         <span className={style.navbarPlus}>
                             <FaPlus />
                         </span>
+                       </Link>
 
                     </li>
                    

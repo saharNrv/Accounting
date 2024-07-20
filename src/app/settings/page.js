@@ -10,7 +10,6 @@ import { MdLogout } from "react-icons/md";
 import { FaEuroSign } from "react-icons/fa";
 import { MdLanguage } from "react-icons/md";
 import Modal from '@/components/module/modal/Modal';
-import Bg from '@/components/module/bg/Bg';
 
 export default function Settings() {
     const [showModal, setShowModal] = useState(false)
@@ -22,8 +21,8 @@ export default function Settings() {
 
     }
     //  A function that shows a modal Language.
-    
-    const showLanguageModalHandler= ()=>{
+
+    const showLanguageModalHandler = () => {
         setShowModalLanguage(true)
 
     }
@@ -40,7 +39,6 @@ export default function Settings() {
     return (
         <div className={style.settingsWrap}>
             {/* bg component */}
-            {/* <Bg showModal={showModal}/> */}
             {/* tobar component */}
             <Topbar title={'تنظیمات'} showBtn={true} linkBtnUrl={'/'} />
             {/* setting info */}
@@ -97,24 +95,31 @@ export default function Settings() {
                     </div>
                     <IoIosArrowBack />
                 </Link>
-               
+
 
             </div>
 
             {/* show modal logout */}
             <Modal show={showModal} onClose={closeModalHandler} title={'خروج از حساب کاربری'}>
                 <div className={style.logoutwrraper}>
-                <p className={style.logoutSubTitle}>ایا میخواهید از حساب کاربری خارج شوید؟</p>
-                <div className={style.logoutBtnWrap}>
-                    
-                <button className={style.logoutBtn1}>انصراف</button>
-                <button className={style.logoutBtn2}>تایید</button>
-                </div>
+                    <p className={style.logoutSubTitle}>ایا میخواهید از حساب کاربری خارج شوید؟</p>
+                    <div className={style.logoutBtnWrap}>
+
+                        <button className={style.logoutBtn1}>انصراف</button>
+                        <button className={style.logoutBtn2}>تایید</button>
+                    </div>
                 </div>
 
             </Modal>
             {/* show modal language */}
-            <Modal show={showModalLanguage} onClose={closeModalHandlerLanguage}>
+            <Modal show={showModalLanguage} onClose={closeModalHandlerLanguage} title={"تغییر زبان"}>
+                <div className={style.languageWrapper}>
+                    <p className={style.languageTitle}>زبان خود را تغییر دهید</p>
+                    <div className={style.languageBtnWrap}>
+                        <button>فارسی</button>
+                        <button>English</button>
+                    </div>
+                </div>
 
             </Modal>
         </div>

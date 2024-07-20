@@ -61,3 +61,19 @@
 .logoutBtn2{
   @apply bg-steel-blue-500 text-white border-none rounded-lg
 }
+/* language modal style */
+.languageWrapper{
+
+
+}
+.languageTitle{
+  @apply text-xl text-gray-500 my-4
+
+}
+.languageBtnWrap{
+  @apply flex flex-col items-center
+
+}
+.languageBtnWrap button{
+  @apply w-full my-2 py-3 bg-inherit border-2 border-solid border-steel-blue-500 rounded-lg
+}

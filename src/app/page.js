@@ -44,7 +44,7 @@ export default function Page() {
             {/* recent expenses */}
             <div className={style.recentExpenses}>
                 <h3>مخارج اخیر</h3>
-                <Link href={'/carts'}>مشاهده همه</Link>
+                <Link href={'/show-all-carts'}>مشاهده همه</Link>
             </div>
             <div className={style.homeBox}>
                 <Box />
