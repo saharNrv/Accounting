@@ -5,6 +5,7 @@ import style from '@/styles/Expensesboxdelete.module.css'
 import { FaBoxOpen, FaBrush } from "react-icons/fa";
 import { MdDelete } from 'react-icons/md';
 import Modal from '@/components/module/modal/Modal';
+import Navbar from '@/components/module/navbar/Navbar';
 
 export default function Expensesboxdelete() {
 
@@ -18,6 +19,7 @@ export default function Expensesboxdelete() {
 
     return (
         <>
+        <Navbar/>
             <Topbar title={'12:16 - 1403/4/22'} showBtn={true} linkBtnUrl={'/cartdetails/1'} />
             <div className={style.expensesboxdelete}>
                 <div className={style.expensesboxdeleteInfon}>

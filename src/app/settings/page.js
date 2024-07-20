@@ -10,6 +10,7 @@ import { MdLogout } from "react-icons/md";
 import { FaEuroSign } from "react-icons/fa";
 import { MdLanguage } from "react-icons/md";
 import Modal from '@/components/module/modal/Modal';
+import Navbar from '@/components/module/navbar/Navbar';
 
 export default function Settings() {
     const [showModal, setShowModal] = useState(false)
@@ -38,7 +39,7 @@ export default function Settings() {
     }
     return (
         <div className={style.settingsWrap}>
-            {/* bg component */}
+            <Navbar/>
             {/* tobar component */}
             <Topbar title={'تنظیمات'} showBtn={true} linkBtnUrl={'/'} />
             {/* setting info */}

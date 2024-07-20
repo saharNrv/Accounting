@@ -2,9 +2,12 @@ import React from 'react';
 import style from '@/styles/Edit-user-account.module.css'
 import Topbar from '@/components/module/topbar/Topbar';
 import Input from '@/components/module/inputwrap/Input';
+import Navbar from '@/components/module/navbar/Navbar';
 
 export default function EditUserAccount() {
     return (
+        <>
+        <Navbar/>
         <div className={style.editUser}>
             <Topbar title={'ویرایش حساب کاربری'} showBtn={true} linkBtnUrl={'/settings'} />
             <form className={style.editUserForm}>
@@ -18,5 +21,6 @@ export default function EditUserAccount() {
             </form>
 
         </div>
+        </>
     );
 }

@@ -1,0 +1,36 @@
+.loginWrap{
+    
+}
+.loginTopbr{
+    @apply h-[200px] bg-steel-blue-600 pt-6 flex rounded-b-lg flex-col items-center  text-white gap-2
+}
+.loginTitleWrap{
+  
+    @apply flex items-center gap-1
+}
+
+/* body */
+
+.loginBody{
+    padding: 20px 10px;
+
+}
+.loginBodyTitle{
+   
+    @apply text-2xl text-steel-blue-500 my-4
+
+}
+.loginForm{
+
+}
+.loginBtnWrap{
+    padding: 20px;
+
+
+}
+.loginBtn{
+    @apply w-full p-3 border-none bg-steel-blue-600 text-white ;
+    @apply flex flex-row-reverse items-center gap-2 justify-center rounded-[5px]
+
+}
+        

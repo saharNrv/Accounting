@@ -7,12 +7,14 @@ import { FaPlus } from "react-icons/fa6";
 import Cart from '@/components/module/cart/Cart';
 import { Translate } from '../../../context/CultureProvider';
 import { Dictionary } from '../../../lib/dictionary';
+import Navbar from '@/components/module/navbar/Navbar';
 
 
 function Carts() {
     // * Renders the carts component with a Topbar, new cart link, and existing Cart components.
     return (
         <>
+            <Navbar/>
             {/* tobar component */}
             <Topbar title='کارت ها' showBtn={false}  />
             <div className={style.carts}>

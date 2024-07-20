@@ -8,7 +8,7 @@ import Box from '@/components/module/box/Box';
 import Modal from '@/components/module/modal/Modal';
 import { Translate } from '../../../../context/CultureProvider';
 import { Dictionary } from '../../../../lib/dictionary';
-import Bg from '@/components/module/bg/Bg';
+import Navbar from '@/components/module/navbar/Navbar';
 
 export default function CartDetails() {
 
@@ -26,10 +26,10 @@ export default function CartDetails() {
     }
 
     return (
+        <>
+        <Navbar/>
         <div className={style.cartDetailsWrapper}>
-            {/* bg component */}
-            <Bg showModal={showModal}/>
-
+           
             {/* tobar component It will get the title props from the data */}
             <Topbar title={'بلو کارت'} showBtn={true} linkBtnUrl={'/carts'} />
             {/* cart details */}
@@ -79,5 +79,7 @@ export default function CartDetails() {
                 </div>
             </Modal>
         </div>
+        </>
+
     );
 }

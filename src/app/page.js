@@ -5,10 +5,12 @@ import { IoSettings } from "react-icons/io5";
 import { FaChartPie } from "react-icons/fa6";
 import Link from 'next/link';
 import Box from '@/components/module/box/Box';
+import Navbar from '@/components/module/navbar/Navbar';
 
 export default function Page() {
     return (
         <>
+        <Navbar/>
             <div className={style.homeWrapper}>
                 {/* home navbar */}
                 <div className={style.homeNav}>
