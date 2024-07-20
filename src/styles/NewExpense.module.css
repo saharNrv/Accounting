@@ -1,5 +1,5 @@
 .newexpense {
-  @apply py-[20px] px-[15px];
+  @apply pt-5 px-3 pb-[100px]
 }
 
 .newexpenseBtnSubTitle {
