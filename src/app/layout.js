@@ -1,7 +1,7 @@
-
 import "./globals.css";
 import { CultureProvider } from "../../context/CultureProvider";
 import ClientOnly from "@/components/client_only/ClientOnly";
+import { AuthorizationProvider } from "../../context/AuthorizationProvider";
 
 
 export const metadata = {
@@ -16,11 +16,11 @@ export default function RootLayout({ children }) {
     <html lang="fa">
       <body >
         <ClientOnly>
-          <CultureProvider>
-           
+          <AuthorizationProvider>
+            <CultureProvider>
             {children}
-
-          </CultureProvider>
+            </CultureProvider>
+          </AuthorizationProvider>
         </ClientOnly>
       </body>
     </html>
