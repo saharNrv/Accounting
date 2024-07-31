@@ -18,8 +18,6 @@ export const AxiosBaseRequest = (extraHeader) => {
             return axios.create({
                 baseURL: `${BASE_URL}${API_VERSION}`,
                 headers: extraHeader ? { ...extraHeader, Authorization: `Bearer ${auth.token}` } : { Authorization: `Bearer ${auth.token}` }
-
-
             })
         }
 

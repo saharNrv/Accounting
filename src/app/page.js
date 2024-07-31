@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useState } from 'react';
 import style from '@/styles/Home.module.css'
 import { FaUser } from 'react-icons/fa';
 import { IoSettings } from "react-icons/io5";
@@ -6,11 +7,24 @@ import { FaChartPie } from "react-icons/fa6";
 import Link from 'next/link';
 import Box from '@/components/module/box/Box';
 import Navbar from '@/components/module/navbar/Navbar';
+import ProtectedLayout from '@/components/protectedLayout/ProtectedLayout';
+import { apiGetAccount } from '../../api/account';
 
 export default function Page() {
+
+    const [accountData, setAccountData] = useState(null)
+
+    useEffect(() => {
+        apiGetAccount()
+            .then(res => {
+                console.log(res);
+                setAccountData(res.result)
+            })
+    }, [])
+
     return (
-        <>
-        <Navbar/>
+        <ProtectedLayout>
+            <Navbar />
             <div className={style.homeWrapper}>
                 {/* home navbar */}
                 <div className={style.homeNav}>
@@ -20,18 +34,24 @@ export default function Page() {
                             <FaUser className={style.homeNavIcon} />
                         </div>
                         <div className={style.homeNavInfo}>
-                            <p className={style.homeNavName}>سحر نوری</p>
-                            <p className={style.homeNavPhone}>09124568956</p>
+                            <p className={style.homeNavName}>
+                                {(accountData && accountData.full_name !== '') ? accountData.full_name : 'نام کاربری'}
+                            </p>
+                            <p className={style.homeNavPhone}>
+                                {
+                                    (accountData && accountData.user_name )
+                                }
+                            </p>
                         </div>
                     </div>
                     {/* home navbar left */}
                     <div className={style.homeNavLeft}>
                         <div className={style.homeNavLeftIconWrap}>
                             <Link href={'/'}>
-                            <FaChartPie />
+                                <FaChartPie />
                             </Link>
                             <Link href={'/settings'}>
-                            <IoSettings />
+                                <IoSettings />
                             </Link>
 
                         </div>
@@ -53,7 +73,7 @@ export default function Page() {
                 <Box />
 
             </div>
-        </>
+        </ProtectedLayout>
 
 
     );
