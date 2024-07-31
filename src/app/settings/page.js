@@ -1,6 +1,6 @@
 "use client"
 import Topbar from '@/components/module/topbar/Topbar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from '@/styles/Settings.module.css'
 import { FaUser } from 'react-icons/fa';
 import Link from 'next/link';
@@ -11,10 +11,12 @@ import { FaEuroSign } from "react-icons/fa";
 import { MdLanguage } from "react-icons/md";
 import Modal from '@/components/module/modal/Modal';
 import Navbar from '@/components/module/navbar/Navbar';
+import { apiGetAccount } from '../../../api/account';
 
 export default function Settings() {
     const [showModal, setShowModal] = useState(false)
     const [showModalLanguage, setShowModalLanguage] = useState(false)
+    const [ account, setAccount ] = useState(null)
 
     //  A function that shows a modal.
     const showModalHandler = () => {
@@ -37,6 +39,19 @@ export default function Settings() {
 
         setShowModalLanguage(false)
     }
+
+    useEffect(()=>{
+
+        apiGetAccount()
+              .then(res=>{
+                console.log(res);
+                // if(res.result !== null){
+                //     setAccount(res.result)
+                // }
+              })
+
+    },[])
+
     return (
         <div className={style.settingsWrap}>
             <Navbar/>
@@ -48,7 +63,10 @@ export default function Settings() {
                     <FaUser className={style.settingIcon} />
                 </div>
                 <div className={style.settingInfo}>
-                    <h3>سحر نوری</h3>
+                    <h3>
+                    {(account && account.full_name !== '') ? account.full_name : 'نام کاربری'}
+
+                    </h3>
                     <p>تاریخ عضویت: 1403/04/18</p>
                 </div>
 
