@@ -15,3 +15,23 @@
   @apply w-full p-[10px] border-none rounded-[5px]
     bg-steel-blue-600 text-white;
 }
+
+.addnewcartBtnWrap{
+  padding: 10px;
+}
+
+.addnewcartBtnTitle{
+
+color: #475569;
+padding: 5px;
+}
+.addnewcartBtn{
+  width: 100%;
+  padding: 12px 10px;
+  border: none;
+  text-align: right;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  color: #757575;
+
+}

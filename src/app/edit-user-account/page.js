@@ -5,8 +5,10 @@ import Topbar from '@/components/module/topbar/Topbar';
 import Input from '@/components/module/inputwrap/Input';
 import Navbar from '@/components/module/navbar/Navbar';
 import { apiChangeName } from '../../../api/account';
+import { useRouter } from 'next/navigation';
 
 export default function EditUserAccount() {
+    const router = useRouter()
 
     const [userName, setUserName] = useState('')
   
@@ -19,7 +21,11 @@ export default function EditUserAccount() {
 
 
         apiChangeName(changeInputUserName)
-                  .then(res=>console.log(res))
+                  .then(res=>{
+                    if(res.result !== null){
+                        router.replace('/')
+                    }
+                  })
     }
 
     return (
