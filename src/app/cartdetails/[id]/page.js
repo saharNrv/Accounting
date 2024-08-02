@@ -9,26 +9,37 @@ import Modal from '@/components/module/modal/Modal';
 import { Translate } from '../../../../context/CultureProvider';
 import { Dictionary } from '../../../../lib/dictionary';
 import Navbar from '@/components/module/navbar/Navbar';
-import { useParams } from 'next/navigation';
-import { apiGetByIdBank } from '../../../../api/bank';
+import { useParams, useRouter } from 'next/navigation';
+import { apiDeleteBank, apiGetByIdBank } from '../../../../api/bank';
+import Image from 'next/image';
 
 export default function CartDetails() {
     // id is a bank that get from url
-    const {id} = useParams()
+    const { id } = useParams()
+    const router = useRouter()
 
     // <--- States --->
     const [showModal, setShowModal] = useState(false)
 
+    // info cart is for store bankCart details 
+    const [infoCart, setInfoCart] = useState()
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
+
+
     // <--- Effects --->
 
-    useEffect(()=>{
-      
-        apiGetByIdBank(id)
-               .then(res=>{
-                console.log(res);
-               })
+    useEffect(() => {
 
-    },[])
+        apiGetByIdBank(id)
+            .then(res => {
+                console.log(res);
+                if (res.result !== null) {
+
+                    setInfoCart(res.result)
+                }
+            })
+
+    }, [])
 
 
 
@@ -42,6 +53,23 @@ export default function CartDetails() {
     const closeModalHandler = () => {
 
         setShowModal(false)
+        setShowDeleteModal(false)
+    }
+
+    const showDeleteModalHandler = () => {
+        setShowDeleteModal(true)
+
+    }
+
+    const deleteCartHandler = (bankID) => {
+
+        console.log(bankID);
+        apiDeleteBank(bankID)
+            .then(res => {
+                if(res.result !== null){
+                    router.replace('/carts')
+                }
+            })
     }
 
     return (
@@ -50,15 +78,20 @@ export default function CartDetails() {
             <div className={style.cartDetailsWrapper}>
 
                 {/* tobar component It will get the title props from the data */}
-                <Topbar title={'بلو کارت'} showBtn={true} linkBtnUrl={'/carts'} />
+                <Topbar title={(!!infoCart && infoCart.name !== '') ? infoCart.name : ''} showBtn={true} linkBtnUrl={'/carts'} />
                 {/* cart details */}
                 <div className={style.cartDetailsInfowrap} >
                     <div className={style.cartDetailsImgWrap}>
-                        <img src="https://jackblack.ir/wp-content/uploads/2021/06/blu-99-09-18-1.jpg" className={style.cartDetailsImg} alt="img" />
+                        <Image
+                            className={style.cartDetailsImg}
+                            width={50}
+                            height={50}
+                        // src={`/icon/${infoCart.bank_slug}.png`}
+                        />
                     </div>
                     <div className={style.cartDetailsInfo}>
                         <h3>{Translate(Dictionary.BANKS)}</h3>
-                        <p>3789950003887747</p>
+                        <p>{(!!infoCart && infoCart.bank_number !== '') ? infoCart.bank_number : ''}</p>
 
                     </div>
 
@@ -72,7 +105,7 @@ export default function CartDetails() {
                             <span >ماه جاری</span>
                             <IoMdArrowDropdown />
                         </button>
-                        <button className={style.showExpensesBtn2}>
+                        <button onClick={showDeleteModalHandler} className={style.showExpensesBtn2}>
                             <span>حذف کارت</span>
                             <MdDelete />
                         </button>
@@ -97,7 +130,19 @@ export default function CartDetails() {
 
                     </div>
                 </Modal>
+
+                {/* modal delete */}
+                <Modal show={showDeleteModal} onClose={closeModalHandler} title={'ایا از حذف کارت مطمین هستید؟'}>
+                    <div className={style.detelteBox}>
+                        <button className={style.detelteBox1} onClick={() => deleteCartHandler(id)} >بله</button>
+                        <button className={style.detelteBox2} onClick={() => setShowDeleteModal(false)}>خیر</button>
+                    </div>
+
+                </Modal>
+
             </div>
+
+
         </>
 
     );

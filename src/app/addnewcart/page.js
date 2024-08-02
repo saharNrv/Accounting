@@ -39,6 +39,7 @@ export default function AddNewCart() {
     useEffect(() => {
         apiGetAllBank()
             .then(res => {
+                console.log(res);
                 if (res.result !== null) {
 
                     setAllBanks(res.result)
@@ -64,6 +65,7 @@ export default function AddNewCart() {
 
         apiPostBank(newCart)
                 .then(res=>{
+                    
                     router.replace('/carts')
                 })
     }

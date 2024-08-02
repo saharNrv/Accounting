@@ -23,3 +23,11 @@ export const apiGetByIdBank = async (bankID) =>{
 
     return response.data
 }
+
+export const apiDeleteBank = async (bankID)=>{
+
+    const response = await AxiosBaseRequest().delete(`${baseURL}/${bankID}`)
+
+    return response.data
+
+}
