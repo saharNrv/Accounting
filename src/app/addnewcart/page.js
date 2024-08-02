@@ -9,6 +9,7 @@ import Modal from '@/components/module/modal/Modal';
 import { apiGetAllBank, apiPostBank } from '../../../api/bank';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { replaceFaNum2EnNum } from '../../../lib/string';
 export default function AddNewCart() {
 
     const router = useRouter()
@@ -56,7 +57,7 @@ export default function AddNewCart() {
         event.preventDefault()
 
         const newCart={
-            bank_number:Number(cartNumber),
+            bank_number:Number(replaceFaNum2EnNum(cartNumber)),
             bank_slug:bank.bank_slug,
             name:cartName
         }

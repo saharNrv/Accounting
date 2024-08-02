@@ -7,7 +7,7 @@ function Cart({ title, cartnumber,cartID ,imgSrc}) {
     return (
 
         <div className={style.cart}>
-                <Link href={'/cartdetails/1'} className={style.cartWrapper}>
+                <Link href={`/cartdetails/${cartID}`} className={style.cartWrapper}>
 
 
                 <div className={style.cartImgWrap}>

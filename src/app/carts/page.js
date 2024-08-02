@@ -14,28 +14,24 @@ import { apiGetAllBank } from '../../../api/bank';
 
 function Carts() {
 
-    const [bankCarts,setBankCarts]=useState([])
+    const [bankCarts, setBankCarts] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
 
         apiGetAccount()
-               .then(res=>{
+            .then(res => {
                 console.log(res);
                 setBankCarts(res.result.bank_account)
-               })
+            })
 
-    },[])
-
-   
-
-
+    }, [])
 
     // * Renders the carts component with a Topbar, new cart link, and existing Cart components.
     return (
         <>
-            <Navbar/>
+            <Navbar />
             {/* tobar component */}
-            <Topbar title='کارت ها' showBtn={false}  />
+            <Topbar title='کارت ها' showBtn={false} />
             <div className={style.carts}>
                 <div className={style.cartsRight}>
                     <Link href={'/addnewcart'} className={style.cartsLink}>
@@ -51,13 +47,19 @@ function Carts() {
             {/*  cart component inclusive titile and cartnumber props  */}
 
             {
-                bankCarts.length >0 && bankCarts.map((bankCart,index)=>(
-                    
-                    <Cart key={index} title={bankCart.name} cartnumber={bankCart.bank_number} imgSrc={bankCart.bank_slug} />
+                bankCarts.length > 0 && bankCarts.map((bankCart, index) => (
+
+                    <Cart
+                        key={index}
+                        title={bankCart.name}
+                        cartnumber={bankCart.bank_number}
+                        imgSrc={bankCart.bank_slug}
+                        cartID={bankCart.ID}
+                    />
 
                 ))
             }
-            
+
         </>
     );
 }
