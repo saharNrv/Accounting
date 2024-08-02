@@ -4,6 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 function Cart({ title, cartnumber,cartID ,imgSrc}) {
+    
+    
+
+
     return (
 
         <div className={style.cart}>

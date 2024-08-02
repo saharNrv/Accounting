@@ -16,3 +16,10 @@ export const apiPostBank = async (input) =>{
     return response.data
 
 }
+
+export const apiGetByIdBank = async (bankID) =>{
+
+    const response = await AxiosBaseRequest().get(`${baseURL}/by_id/${bankID}`)
+
+    return response.data
+}

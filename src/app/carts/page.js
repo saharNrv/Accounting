@@ -20,7 +20,7 @@ function Carts() {
 
         apiGetAccount()
             .then(res => {
-                console.log(res);
+               
                 setBankCarts(res.result.bank_account)
             })
 
