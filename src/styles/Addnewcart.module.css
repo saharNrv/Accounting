@@ -20,6 +20,10 @@
   padding: 10px;
 }
 
+
+
+
+
 .addnewcartBtnTitle{
 
 color: #475569;
@@ -35,3 +39,14 @@ padding: 5px;
   color: #757575;
 
 }
+
+.gridContainer {
+  @apply grid grid-cols-2 gap-2;
+}
+
+.gridContainer button {
+  @apply p-2 rounded-md bg-steel-blue-200 outline-none flex items-center justify-between ;
+}
+
+
+

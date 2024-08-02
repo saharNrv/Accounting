@@ -1,16 +1,35 @@
 "use client"
 import Topbar from '@/components/module/topbar/Topbar';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import style from '@/styles/Carts.module.css'
 import { FaPlus } from "react-icons/fa6";
 import Cart from '@/components/module/cart/Cart';
 import { Translate } from '../../../context/CultureProvider';
 import { Dictionary } from '../../../lib/dictionary';
 import Navbar from '@/components/module/navbar/Navbar';
+import { apiGetAccount } from '../../../api/account';
+import { apiGetAllBank } from '../../../api/bank';
 
 
 function Carts() {
+
+    const [bankCarts,setBankCarts]=useState([])
+
+    useEffect(()=>{
+
+        apiGetAccount()
+               .then(res=>{
+                console.log(res);
+                setBankCarts(res.result.bank_account)
+               })
+
+    },[])
+
+   
+
+
+
     // * Renders the carts component with a Topbar, new cart link, and existing Cart components.
     return (
         <>
@@ -30,12 +49,15 @@ function Carts() {
 
             </div>
             {/*  cart component inclusive titile and cartnumber props  */}
+
+            {
+                bankCarts.length >0 && bankCarts.map((bankCart,index)=>(
+                    
+                    <Cart key={index} title={bankCart.name} cartnumber={bankCart.bank_number} imgSrc={bankCart.bank_slug} />
+
+                ))
+            }
             
-            <Cart title={'بلو بانک'} cartnumber={'3789950003887747'} />
-            
-
-
-
         </>
     );
 }

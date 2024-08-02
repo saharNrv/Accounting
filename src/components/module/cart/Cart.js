@@ -1,8 +1,9 @@
 import React from 'react';
 import style from './Cart.module.css';
 import Link from 'next/link';
+import Image from 'next/image';
 
-function Cart({ title, cartnumber,cartID }) {
+function Cart({ title, cartnumber,cartID ,imgSrc}) {
     return (
 
         <div className={style.cart}>
@@ -10,7 +11,12 @@ function Cart({ title, cartnumber,cartID }) {
 
 
                 <div className={style.cartImgWrap}>
-                    <img src="https://jackblack.ir/wp-content/uploads/2021/06/blu-99-09-18-1.jpg" alt="img" className={style.cartImg} />
+                   <Image
+                   className={style.cartImg}
+                   src={`/icon/${imgSrc}.png`}
+                   width={50}
+                   height={50}
+                   />
                 </div>
                 <div className={style.cartInfo}>
                     <h3>{title}</h3>

@@ -6,10 +6,17 @@ import Link from 'next/link';
 import Input from '@/components/module/inputwrap/Input';
 import Navbar from '@/components/module/navbar/Navbar';
 import Modal from '@/components/module/modal/Modal';
-import { apiGetAllBank } from '../../../api/bank';
+import { apiGetAllBank, apiPostBank } from '../../../api/bank';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 export default function AddNewCart() {
 
-    const [bank, setBank] = useState('')
+    const router = useRouter()
+
+    const [bank, setBank] = useState({
+        name: '',
+        bank_slug: ''
+    })
     const [cartNumber, setCartNumber] = useState('')
     const [cartName, setCartName] = useState('')
     const [showModal, setShowModal] = useState(false)
@@ -20,6 +27,7 @@ export default function AddNewCart() {
     const choiceBank = (event) => {
         event.preventDefault()
         setShowModal(true)
+
 
     }
     // close modal handler
@@ -37,6 +45,28 @@ export default function AddNewCart() {
             })
     }, [])
 
+    // select bank_slug
+    const selectBank = (bankInfo) => {
+        setBank(bankInfo)
+        setShowModal(false)
+    }
+
+    // submit handler
+    const submitHandler = (event) =>{
+        event.preventDefault()
+
+        const newCart={
+            bank_number:Number(cartNumber),
+            bank_slug:bank.bank_slug,
+            name:cartName
+        }
+
+        apiPostBank(newCart)
+                .then(res=>{
+                    router.replace('/carts')
+                })
+    }
+
 
     return (
         <>
@@ -51,7 +81,11 @@ export default function AddNewCart() {
 
                     <div className={style.addnewcartBtnWrap}>
                         <h4 className={style.addnewcartBtnTitle}>بانک</h4>
-                        <button className={style.addnewcartBtn} onClick={choiceBank}>بانک خود را انتخاب کنید</button>
+                        <button className={style.addnewcartBtn} onClick={choiceBank}>
+                            {
+                                bank.name === '' ? "بانک خود را انتخاب کنید" : bank.name
+                            }
+                        </button>
                     </div>
                     <Input
                         title={'شماره کارت'}
@@ -69,10 +103,12 @@ export default function AddNewCart() {
 
                     <div className={style.formBtn}>
 
-                        <button >تایید</button>
+                        <button onClick={submitHandler} >تایید</button>
                     </div>
                 </form>
                 {/* </div> */}
+
+
 
 
             </div>
@@ -80,13 +116,22 @@ export default function AddNewCart() {
             {/* modal */}
             <Modal title={'بانک خود را انتخاب کنید'} show={showModal} onClose={closeModal}>
 
-                <div className="grid grid-cols-2 gap-2">
-                    
+                <div className={style.gridContainer}>
+
                     {
-                        allBanks.length > 0 && allBanks.map((bank, index)=>(
-                            <button>
+                        allBanks.length > 0 && allBanks.map((bank, index) => (
+                            <button key={index} onClick={() => selectBank({
+                                name: bank.name,
+                                bank_slug: bank.bank_slug
+                            })}>
                                 <span>{bank.name}</span>
-                                <img src={`/public/icon/${bank.bank_slug}.png`} alt="" />
+
+                                <Image
+                                    src={`/icon/${bank.bank_slug}.png`}
+                                    width={30}
+                                    height={30}
+                                    alt={bank.bank_slug}
+                                />
                             </button>
                         ))
                     }
