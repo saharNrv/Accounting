@@ -82,12 +82,16 @@ export default function CartDetails() {
                 {/* cart details */}
                 <div className={style.cartDetailsInfowrap} >
                     <div className={style.cartDetailsImgWrap}>
-                        <Image
-                            className={style.cartDetailsImg}
-                            width={50}
-                            height={50}
-                        // src={`/icon/${infoCart.bank_slug}.png`}
-                        />
+                        {
+                            !!infoCart && (
+                                <Image
+                                className={style.cartDetailsImg}
+                                width={50}
+                                height={50}
+                            src={`/icon/${infoCart.bank_slug}.png`}
+                            />
+                            )
+                        }
                     </div>
                     <div className={style.cartDetailsInfo}>
                         <h3>{Translate(Dictionary.BANKS)}</h3>
