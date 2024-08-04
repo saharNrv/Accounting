@@ -32,3 +32,30 @@
 .newexpenseSubmitBtn{
   @apply w-full bg-steel-blue-600 p-3 border-none rounded-[5px] text-white
 }
+
+.cartBankBtnWrap{
+margin: 10px 0px
+}
+.cartBankBtn{
+  @apply w-full flex items-center gap-2 bg-inherit border-2 border-solid border-steel-blue-700;
+  @apply rounded-md py-2 px-4 mt-4
+
+}
+.cartBankBtnImg{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border: 1px solid lightblue;
+
+}
+.cartBankBtnInfo{
+  
+}
+.cartBankBtnInfoName{
+  font-size: 18px;
+
+}
+.cartBankBtnInfoCartNumber{
+  color: #787878;
+
+}
