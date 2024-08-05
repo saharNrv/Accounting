@@ -12,13 +12,25 @@ import { date2Timestamp } from '../../../lib/date';
 import { apiPostExpenses } from '../../../api/expenses';
 
 export default function NewExpense() {
+
+    // state
+
     const [account, setAccount] = useState([])
     const [infoCart, setInfoCart] = useState({
-        name:''
+        name: ''
     })
     const [price, setPrice] = useState('')
-    const [note, setNote] =useState('')
+    const [note, setNote] = useState('')
     const [showModalCartBank, setShowModalCartBank] = useState(false)
+    const [showModalDate, setShowModalDate] =useState(false)
+    const [date, setDate] = useState({
+        day:0,
+        month:0,
+        year:0,
+        hour:0,
+        minute:0
+    })
+
 
     // function
     const showCartBankHandler = () => {
@@ -29,55 +41,43 @@ export default function NewExpense() {
 
     const closeModalHandler = () => {
         setShowModalCartBank(false)
+        setShowModalDate(false)
     }
-    
-    const choiceCartHandler =(info)=>{
-        console.log('info',info);
+
+    const choiceCartHandler = (info) => {
+        console.log('info', info);
         setInfoCart(info)
         setShowModalCartBank(false)
-        
+
 
     }
 
-    const submitNewExpensesHandler = ()=>{
-        
-        const newExpenses={
-            amount:price,
-            bank_id:infoCart.ID,
-            bank_name:infoCart.name,
-            bank_number:infoCart.bank_number,
-            category:'خرید',
-            date:{
-                day:Intl.DateTimeFormat(['fa'],{
-                    day:'2-digit'
-                }).format(date2Timestamp(infoCart.CreatedAt)),
-                hour:Intl.DateTimeFormat(['fa'],{
-                    hour:'2-digit'
-                }).format(date2Timestamp(infoCart.CreatedAt)),
-                minute:Intl.DateTimeFormat(['fa'],{
-                    minute:'2-digit'
-                }).format(date2Timestamp(infoCart.CreatedAt)),
-                month:Intl.DateTimeFormat(['fa'],{
-                    month:'long'
-                }).format(date2Timestamp(infoCart.CreatedAt)),
-                
-                year:Intl.DateTimeFormat(['fa'],{
-                    year:'numeric'
-                }).format(date2Timestamp(infoCart.CreatedAt)),
-                
+   
+
+    const submitNewExpensesHandler = () => {
+
+        const newExpenses = {
+            amount: price,
+            bank_id: infoCart.ID,
+            bank_name: infoCart.name,
+            bank_number: infoCart.bank_number,
+            category: 'خرید',
+            date: {
+
+
             },
-            note:note
+            note: note
         }
 
-        // console.log(newExpenses);
+        console.log(newExpenses);
 
         apiPostExpenses(newExpenses)
-               .then(res=>{
+            .then(res => {
                 console.log(res);
-                
-               })   
-        
-        
+
+            })
+
+
 
     }
 
@@ -118,7 +118,7 @@ export default function NewExpense() {
                     <p className={style.newexpenseBtnSubTitle}>تاریخ و زمان</p>
                     <div className={style.newexpenseBtnContent}>
 
-                        <button className={style.newexpenseBtn}>
+                        <button className={style.newexpenseBtn} onClick={()=>setShowModalDate(true)}>
                             <span className={style.newexpenseBtnTitle}>۳۰ تیر ۱۴۰۳</span>
 
                         </button>
@@ -132,7 +132,7 @@ export default function NewExpense() {
 
                         <button className={style.newexpenseBtn} onClick={showCartBankHandler}>
                             <span className={style.newexpenseBtnTitle}>
-                                {infoCart.name ==='' ?'کارت خود را انتخاب کنید': infoCart.name}
+                                {infoCart.name === '' ? 'کارت خود را انتخاب کنید' : infoCart.name}
                             </span>
                             <MdArrowDropDown />
                         </button>
@@ -144,11 +144,11 @@ export default function NewExpense() {
                     <p className={style.newexpenseBtnSubTitle}>توضیحات</p>
                     <div className={style.newexpenseBtnContent}>
 
-                        <textarea 
-                        className={style.newexpenseTextarea}
-                        placeholder='توضیحات را وارد کنید'
-                        value={note}
-                        onChange={(event)=>setNote(event.target.value)}
+                        <textarea
+                            className={style.newexpenseTextarea}
+                            placeholder='توضیحات را وارد کنید'
+                            value={note}
+                            onChange={(event) => setNote(event.target.value)}
                         ></textarea>
                     </div>
                     <div className={style.newexpenseSubmit}>
@@ -161,13 +161,15 @@ export default function NewExpense() {
 
             </div>
 
+            {/* modal for  choice bank cart*/}
+
             <Modal title={'کارت بانکی خود را انتخاب کنید'} show={showModalCartBank} onClose={closeModalHandler}>
                 <div className={style.cartBankBtnWrap}>
 
                     {
                         account.map((cartBank, index) => (
 
-                            <button key={index} className={style.cartBankBtn} onClick={()=>choiceCartHandler(cartBank)}>
+                            <button key={index} className={style.cartBankBtn} onClick={() => choiceCartHandler(cartBank)}>
 
                                 <Image
                                     className={style.cartBankBtnImg}
@@ -185,6 +187,31 @@ export default function NewExpense() {
                 </div>
 
             </Modal>
+
+            <Modal title={'تاریخ را انتخاب کنید'} show={showModalDate} onClose={closeModalHandler}>
+
+                <div>
+                    <input type="text" placeholder='روز' maxLength={2} onChange={(event)=>setDate({
+                        ...date,
+                        day:event.target.valueAsNumber
+                    })} />
+                    <input type="text" placeholder='ماه' maxLength={2} onChange={(event)=>setDate({
+                        ...date,
+                        month:event.target.valueAsNumber
+                    })}/>
+                    <input type="text" placeholder='سال' maxLength={4} onChange={(event)=>setDate({
+                        ...date,
+                        year:event.target.valueAsNumber
+                    })}/>
+                    <button onClick={()=>{
+                        console.log("ok date =>", date);
+                        
+                    }}>تایید</button>
+                </div>
+
+            </Modal>
         </div>
     );
 }
+
+
