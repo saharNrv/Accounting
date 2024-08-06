@@ -37,7 +37,7 @@ export default function ShowAllCarts() {
           {
             allExpenses.length >0 && allExpenses.map((exp,index)=>(
 
-              <Box category={categoryName(exp.category)} price={exp.amount.toLocaleString()} day={exp.day} month={exp.month} year={exp.year} />
+              <Box category={categoryName(exp.category)} price={exp.amount.toLocaleString()} day={exp.day} month={exp.month} year={exp.year}  boxID={exp.ID}/>
             ))
           }
          

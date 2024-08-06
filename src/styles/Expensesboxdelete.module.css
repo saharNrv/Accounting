@@ -37,9 +37,15 @@
 }
 
 .expensesboxdeleteModalBtn{
-  width: 100%;
-  background-color: #666;
+ @apply grid grid-cols-2 gap-2 my-4
 }
 
-.expensesboxdeleteModalBtn1{}
-.expensesboxdeleteModalBtn2{}
+.expensesboxdeleteModalBtn1,.expensesboxdeleteModalBtn2{
+  @apply p-4 border-none rounded-md
+}
+.expensesboxdeleteModalBtn1{
+ 
+}
+.expensesboxdeleteModalBtn2{
+  @apply bg-green-500 text-white
+}

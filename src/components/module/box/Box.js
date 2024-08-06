@@ -3,9 +3,9 @@ import style from './Box.module.css';
 import { FaBoxOpen } from "react-icons/fa";
 import Link from 'next/link';
 
-function Box({category, price, day, month, year}) {
+function Box({category, price, day, month, year,boxID}) {
     return (
-        <Link href={'/expensesboxdelete/1'} >
+        <Link href={`/expensesboxdelete/${boxID}`} >
             <div className={style.boxWrap}>
                 <div className={style.boxInfoWrap}>
                     <div className={style.boxIconWrap}>

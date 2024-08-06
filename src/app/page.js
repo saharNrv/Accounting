@@ -91,6 +91,7 @@ export default function Page() {
                                 month={exp.month}
                                 year={exp.year}
                                 price={exp.amount.toLocaleString()}
+                                boxID={exp.ID}
                             />
                             }
                         </>
