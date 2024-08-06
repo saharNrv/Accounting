@@ -10,19 +10,24 @@ import { apiGetAccount } from '../../../api/account';
 import Image from 'next/image';
 import { date2Timestamp } from '../../../lib/date';
 import { apiPostExpenses } from '../../../api/expenses';
+import { categoryName, getDate } from '../../../lib/string';
+import { useRouter } from 'next/navigation';
 
 export default function NewExpense() {
 
     // state
-
+    const router = useRouter()
     const [account, setAccount] = useState([])
     const [infoCart, setInfoCart] = useState({
         name: ''
     })
     const [price, setPrice] = useState('')
+    const [category, setCategory] = useState('')
     const [note, setNote] = useState('')
     const [showModalCartBank, setShowModalCartBank] = useState(false)
     const [showModalDate, setShowModalDate] =useState(false)
+    const [showModalCategory, setShowModalCategory] =useState(false)
+
     const [date, setDate] = useState({
         day:0,
         month:0,
@@ -42,50 +47,57 @@ export default function NewExpense() {
     const closeModalHandler = () => {
         setShowModalCartBank(false)
         setShowModalDate(false)
+        setShowModalCategory(false)
+        
     }
 
     const choiceCartHandler = (info) => {
-        console.log('info', info);
+        
         setInfoCart(info)
         setShowModalCartBank(false)
 
 
     }
 
-   
+   const changeCategory = (categoryValue) =>{
+      
+    setCategory(categoryValue)
+    setShowModalCategory(false)
+
+   }
 
     const submitNewExpensesHandler = () => {
 
         const newExpenses = {
-            amount: price,
+            amount: Number(price),
             bank_id: infoCart.ID,
             bank_name: infoCart.name,
             bank_number: infoCart.bank_number,
-            category: 'خرید',
-            date: {
-
-
-            },
+            category: category,
+            date:date,
             note: note
         }
 
-        console.log(newExpenses);
+        
 
         apiPostExpenses(newExpenses)
             .then(res => {
-                console.log(res);
-
+                if(res.result !== null){
+                    router.replace('/')
+                }
             })
 
 
 
     }
 
+
+
     // useeffect
     useEffect(() => {
         apiGetAccount()
             .then(res => {
-                console.log(res);
+               
                 if (res.result !== null) {
                     setAccount(res.result.bank_account)
 
@@ -106,8 +118,10 @@ export default function NewExpense() {
                     <p className={style.newexpenseBtnSubTitle}>دسته بندی</p>
                     <div className={style.newexpenseBtnContent}>
 
-                        <button className={style.newexpenseBtn}>
-                            <span className={style.newexpenseBtnTitle}>دسته بندی را انتخاب کنید</span>
+                        <button className={style.newexpenseBtn} onClick={()=>setShowModalCategory(true)}>
+                            <span className={style.newexpenseBtnTitle}>
+                                {categoryName(category)}
+                            </span>
                             <MdArrowDropDown />
                         </button>
                     </div>
@@ -119,7 +133,11 @@ export default function NewExpense() {
                     <div className={style.newexpenseBtnContent}>
 
                         <button className={style.newexpenseBtn} onClick={()=>setShowModalDate(true)}>
-                            <span className={style.newexpenseBtnTitle}>۳۰ تیر ۱۴۰۳</span>
+                            <span className={style.newexpenseBtnTitle}>
+                                {
+                                    getDate(date)
+                                }
+                            </span>
 
                         </button>
                     </div>
@@ -188,28 +206,48 @@ export default function NewExpense() {
 
             </Modal>
 
+            {/* modal for choice date */}
+
             <Modal title={'تاریخ را انتخاب کنید'} show={showModalDate} onClose={closeModalHandler}>
 
-                <div>
+                <div className={style.dateWrapper}>
+                    <div className={style.dateWrapperInput}>
+
                     <input type="text" placeholder='روز' maxLength={2} onChange={(event)=>setDate({
                         ...date,
-                        day:event.target.valueAsNumber
-                    })} />
+                        day:+event.target.value
+                    })} className={style.dateInput} />
                     <input type="text" placeholder='ماه' maxLength={2} onChange={(event)=>setDate({
                         ...date,
-                        month:event.target.valueAsNumber
-                    })}/>
+                        month:+event.target.value
+                    })} className={style.dateInput}/>
                     <input type="text" placeholder='سال' maxLength={4} onChange={(event)=>setDate({
                         ...date,
-                        year:event.target.valueAsNumber
-                    })}/>
-                    <button onClick={()=>{
-                        console.log("ok date =>", date);
-                        
-                    }}>تایید</button>
+                        year:+event.target.value
+                    })} className={style.dateInput}/>
+                    </div>
+
+                    <button onClick={closeModalHandler} className={style.dateBtn}>تایید</button>
                 </div>
 
             </Modal>
+
+           {/* choice for category  */}
+
+           <Modal title={'دسته بندی را انتخاب کنید'} show={showModalCategory} onClose={closeModalHandler} >
+
+                <div className={style.categoryWrap}>
+                    <button className={style.categoryBtn} onClick={()=>changeCategory("Food")}>غذا</button>
+                    <button className={style.categoryBtn} onClick={()=>changeCategory("Transport")}>سفر</button>
+                    <button className={style.categoryBtn} onClick={()=>changeCategory("Entertainment")}>سرگرمی</button>
+                    <button className={style.categoryBtn} onClick={()=>changeCategory("Health")}>سلامتی</button>
+                    <button className={style.categoryBtn} onClick={()=>changeCategory("Education")}>تحصیل</button>
+                    <button className={style.categoryBtn} onClick={()=>changeCategory("Shopping")}>خرید</button>
+                    <button className={style.categoryBtn} onClick={()=>changeCategory("Other")}>سایر</button>
+                </div>
+
+           </Modal>
+            
         </div>
     );
 }

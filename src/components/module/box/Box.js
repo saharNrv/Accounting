@@ -3,7 +3,7 @@ import style from './Box.module.css';
 import { FaBoxOpen } from "react-icons/fa";
 import Link from 'next/link';
 
-function Box() {
+function Box({category, price, day, month, year}) {
     return (
         <Link href={'/expensesboxdelete/1'} >
             <div className={style.boxWrap}>
@@ -13,14 +13,14 @@ function Box() {
                     </div>
                     <div className={style.boxInfo}>
                         <div className={style.boxTitleWrap}>
-                            <p className={style.boxTitle}>دسته بندی نشده</p>
+                            <p className={style.boxTitle}>{category}</p>
                             <img className={style.boxImg} src="https://jackblack.ir/wp-content/uploads/2021/06/blu-99-09-18-1.jpg" alt="img" />
                         </div>
-                        <p className={style.boxDate}>1403/04/18</p>
+                        <p className={style.boxDate}>{`${year}/${month}/${day}`}</p>
                     </div>
 
                 </div>
-                <div className={style.boxPrice}>12000 <span>تومان</span> </div>
+                <div className={style.boxPrice}>{price}<span> تومان</span> </div>
             </div>
         </Link>
     );

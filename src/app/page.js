@@ -9,17 +9,29 @@ import Box from '@/components/module/box/Box';
 import Navbar from '@/components/module/navbar/Navbar';
 import ProtectedLayout from '@/components/protectedLayout/ProtectedLayout';
 import { apiGetAccount } from '../../api/account';
+import { apiGetAllExpenses } from '../../api/expenses';
+import { categoryName, getDate } from '../../lib/string';
 
 export default function Page() {
 
     const [accountData, setAccountData] = useState(null)
+    const [allExpenses, setAllExpenses] = useState([])
 
     useEffect(() => {
         apiGetAccount()
             .then(res => {
-                console.log(res);
                 setAccountData(res.result)
             })
+
+        apiGetAllExpenses()
+            .then(res => {
+                if (res.result !== null) {
+                    setAllExpenses(res.result)
+                    console.log(res.result);
+
+                }
+            })
+
     }, [])
 
     return (
@@ -39,7 +51,7 @@ export default function Page() {
                             </p>
                             <p className={style.homeNavPhone}>
                                 {
-                                    (accountData && accountData.user_name )
+                                    (accountData && accountData.user_name)
                                 }
                             </p>
                         </div>
@@ -69,8 +81,24 @@ export default function Page() {
                 <Link href={'/show-all-carts'}>مشاهده همه</Link>
             </div>
             <div className={style.homeBox}>
-                <Box />
-                <Box />
+                {
+                    allExpenses.length > 0 && allExpenses.map((exp, index) => (
+
+                        <>
+                            {index < 5 && <Box
+                                category={categoryName(exp.category)}
+                                day={exp.day}
+                                month={exp.month}
+                                year={exp.year}
+                                price={exp.amount.toLocaleString()}
+                            />
+                            }
+                        </>
+
+                    ))
+                }
+
+
 
             </div>
         </ProtectedLayout>
