@@ -11,6 +11,7 @@ import ProtectedLayout from '@/components/protectedLayout/ProtectedLayout';
 import { apiGetAccount } from '../../api/account';
 import { apiGetAllExpenses } from '../../api/expenses';
 import { categoryName, getDate } from '../../lib/string';
+import { getAllPrice } from '../../lib/number';
 
 export default function Page() {
 
@@ -71,7 +72,7 @@ export default function Page() {
                 </div>
                 {/* home navbar price */}
                 <div className={style.homeNavPricce}>
-                    <h1>20000 تومان</h1>
+                    <h1>{allExpenses.length > 0 && getAllPrice(allExpenses).toLocaleString() } تومان</h1>
                 </div>
 
             </div>
