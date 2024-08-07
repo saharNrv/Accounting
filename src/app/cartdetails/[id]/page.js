@@ -1,4 +1,5 @@
 "use client"
+
 import Topbar from '@/components/module/topbar/Topbar';
 import React, { useEffect, useState } from 'react';
 import style from '@/styles/Cartdetails.module.css'
@@ -9,12 +10,13 @@ import Modal from '@/components/module/modal/Modal';
 import { Translate } from '../../../../context/CultureProvider';
 import { Dictionary } from '../../../../lib/dictionary';
 import Navbar from '@/components/module/navbar/Navbar';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation'
 import { apiDeleteBank, apiGetByIdBank } from '../../../../api/bank';
 import Image from 'next/image';
-import { apiGetByIdBankExpenses } from '../../../../api/expenses';
+import { apiGetByIdBankExpenses, apiGetMonthExpenses } from '../../../../api/expenses';
 import { categoryName } from '../../../../lib/string';
 import { getAllPrice } from '../../../../lib/number';
+import { getPersianMonth } from '../../../../lib/date';
 
 export default function CartDetails() {
     // id is a bank that get from url
@@ -28,32 +30,37 @@ export default function CartDetails() {
     const [infoCart, setInfoCart] = useState()
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [expensesBox, setExpensesBox] = useState([])
-
+    const [monthCurrents, setMonthCurrents] = useState(false)
 
     // <--- Effects --->
-
     useEffect(() => {
 
         apiGetByIdBank(id)
             .then(res => {
-                console.log(res);
                 if (res.result !== null) {
 
                     setInfoCart(res.result)
                 }
             })
 
-        apiGetByIdBankExpenses(id)
-            .then(res => {
-                console.log('ID', res);
-                if (res.result) {
-                    setExpensesBox(res.result)
-                }
-
-            })
-
     }, [])
 
+    useEffect(() => {
+        if (!monthCurrents) {
+            apiGetByIdBankExpenses(id)
+                .then(res => {
+                    if (res.result) {
+                        setExpensesBox(res.result)
+                    }
+                })
+        } else {
+            apiGetMonthExpenses(getPersianMonth('y'), getPersianMonth('m'))
+                .then(res => {
+                    setExpensesBox(res.result)
+                })
+        }
+
+    }, [monthCurrents])
 
 
     // <--- Handlers --->
@@ -75,7 +82,6 @@ export default function CartDetails() {
     }
 
     const deleteCartHandler = (bankID) => {
-
         console.log(bankID);
         apiDeleteBank(bankID)
             .then(res => {
@@ -92,6 +98,7 @@ export default function CartDetails() {
 
                 {/* tobar component It will get the title props from the data */}
                 <Topbar title={(!!infoCart && infoCart.name !== '') ? infoCart.name : ''} showBtn={true} linkBtnUrl={'/carts'} />
+
                 {/* cart details */}
                 <div className={style.cartDetailsInfowrap} >
                     <div className={style.cartDetailsImgWrap}>
@@ -109,9 +116,7 @@ export default function CartDetails() {
                     <div className={style.cartDetailsInfo}>
                         <h3>{Translate(Dictionary.BANKS)}</h3>
                         <p>{(!!infoCart && infoCart.bank_number !== '') ? infoCart.bank_number : ''}</p>
-
                     </div>
-
                 </div>
 
                 {/* Show expenses */}
@@ -132,33 +137,29 @@ export default function CartDetails() {
                 {/* show add expenses */}
                 <div className={style.showAddExpenses}>
                     <p className={style.showAddExpensesTitle}>جمع مخارج</p>
-                    <p className={style.showAddExpensesPrice}>{expensesBox.length >0 ?getAllPrice(expensesBox): 0 } تومان</p>
-
+                    <p className={style.showAddExpensesPrice}>{expensesBox.length > 0 ? getAllPrice(expensesBox) : 0} تومان</p>
                 </div>
                 {/* box */}
                 {
                     expensesBox.length === 0 ? '' : (expensesBox.map((exp, index) => (
-                        <Box 
+                        <Box
                             key={index}
                             category={categoryName(exp.category)}
-                            price={exp.amount} 
+                            price={exp.amount}
                             day={exp.day}
                             month={exp.month}
                             year={exp.year}
                             boxID={exp.ID}
-                            
+
                         />
                     )))
                 }
-
                 {/* cart details modal */}
 
                 <Modal show={showModal} onClose={closeModalHandler} title={'نمایش مخارج'}>
-
                     <div className={style.modalBtnWrap}>
-                        <button className={style.ModalBtn1}>ماه جاری</button>
-                        <button className={style.ModalBtn2}>کل مخارج</button>
-
+                        <button className={style.ModalBtn1} onClick={()=>setMonthCurrents(true)}>ماه جاری</button>
+                        <button className={style.ModalBtn2} onClick={()=>setMonthCurrents(false)}>کل مخارج</button>
                     </div>
                 </Modal>
 
