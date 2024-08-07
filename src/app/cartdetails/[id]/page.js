@@ -12,6 +12,9 @@ import Navbar from '@/components/module/navbar/Navbar';
 import { useParams, useRouter } from 'next/navigation';
 import { apiDeleteBank, apiGetByIdBank } from '../../../../api/bank';
 import Image from 'next/image';
+import { apiGetByIdBankExpenses } from '../../../../api/expenses';
+import { categoryName } from '../../../../lib/string';
+import { getAllPrice } from '../../../../lib/number';
 
 export default function CartDetails() {
     // id is a bank that get from url
@@ -24,6 +27,7 @@ export default function CartDetails() {
     // info cart is for store bankCart details 
     const [infoCart, setInfoCart] = useState()
     const [showDeleteModal, setShowDeleteModal] = useState(false)
+    const [expensesBox, setExpensesBox] = useState([])
 
 
     // <--- Effects --->
@@ -37,6 +41,15 @@ export default function CartDetails() {
 
                     setInfoCart(res.result)
                 }
+            })
+
+        apiGetByIdBankExpenses(id)
+            .then(res => {
+                console.log('ID', res);
+                if (res.result) {
+                    setExpensesBox(res.result)
+                }
+
             })
 
     }, [])
@@ -66,7 +79,7 @@ export default function CartDetails() {
         console.log(bankID);
         apiDeleteBank(bankID)
             .then(res => {
-                if(res.result !== null){
+                if (res.result !== null) {
                     router.replace('/carts')
                 }
             })
@@ -85,11 +98,11 @@ export default function CartDetails() {
                         {
                             !!infoCart && (
                                 <Image
-                                className={style.cartDetailsImg}
-                                width={50}
-                                height={50}
-                            src={`/icon/${infoCart.bank_slug}.png`}
-                            />
+                                    className={style.cartDetailsImg}
+                                    width={50}
+                                    height={50}
+                                    src={`/icon/${infoCart.bank_slug}.png`}
+                                />
                             )
                         }
                     </div>
@@ -119,11 +132,25 @@ export default function CartDetails() {
                 {/* show add expenses */}
                 <div className={style.showAddExpenses}>
                     <p className={style.showAddExpensesTitle}>جمع مخارج</p>
-                    <p className={style.showAddExpensesPrice}>20000 تومان</p>
+                    <p className={style.showAddExpensesPrice}>{expensesBox.length >0 ?getAllPrice(expensesBox): 0 } تومان</p>
 
                 </div>
                 {/* box */}
-                <Box />
+                {
+                    expensesBox.length === 0 ? '' : (expensesBox.map((exp, index) => (
+                        <Box 
+                            key={index}
+                            category={categoryName(exp.category)}
+                            price={exp.amount} 
+                            day={exp.day}
+                            month={exp.month}
+                            year={exp.year}
+                            boxID={exp.ID}
+                            
+                        />
+                    )))
+                }
+
                 {/* cart details modal */}
 
                 <Modal show={showModal} onClose={closeModalHandler} title={'نمایش مخارج'}>
