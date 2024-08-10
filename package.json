@@ -22,7 +22,8 @@
     "recharts": "^2.12.7",
     "sweetalert": "^2.1.2",
     "swiper": "^11.1.4",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "victory": "^37.0.2"
   },
   "devDependencies": {
     "postcss": "^8",

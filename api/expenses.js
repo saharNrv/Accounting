@@ -52,3 +52,11 @@ export const apiDeleteExpenses = async (bankID) => {
 
     return response.data
 }
+
+export const apiPeriodTime = async (startMonth, startYear, endMonth, endYear) => {
+
+    const response = await AxiosBaseRequest().get(`${baseURL}/get_period_time?fromYear=${startYear}&fromMonth=${1}&toYear=${endYear}&toMonth=${12}`)
+
+    return response.data
+
+}

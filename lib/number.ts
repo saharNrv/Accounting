@@ -1,4 +1,4 @@
-interface ExpensesDTO {
+export interface ExpensesDTO {
   account_id: number;
   amount: number;
   bank_id: number;
@@ -9,7 +9,7 @@ interface ExpensesDTO {
   hour: number;
   day: number;
   month: number;
-  yaer: number;
+  year: number;
   note: string;
 }
 

@@ -46,9 +46,11 @@ export default function CartDetails() {
     }, [])
 
     useEffect(() => {
+
         if (!monthCurrents) {
             apiGetByIdBankExpenses(id)
                 .then(res => {
+
                     if (res.result) {
                         setExpensesBox(res.result)
                     }
@@ -56,7 +58,13 @@ export default function CartDetails() {
         } else {
             apiGetMonthExpenses(getPersianMonth('y'), getPersianMonth('m'))
                 .then(res => {
-                    setExpensesBox(res.result)
+                    // setExpensesBox(res.result)
+                    if (res.result !== null && res.result.length > 0) {
+                        const expensesResult = res.result.filter(item => item.bank_id === +id)
+                        setExpensesBox(expensesResult)
+                    } else if (res.result !== null && res.result.length === 0) {
+                        setExpensesBox([])
+                    }
                 })
         }
 
@@ -158,8 +166,8 @@ export default function CartDetails() {
 
                 <Modal show={showModal} onClose={closeModalHandler} title={'نمایش مخارج'}>
                     <div className={style.modalBtnWrap}>
-                        <button className={style.ModalBtn1} onClick={()=>setMonthCurrents(true)}>ماه جاری</button>
-                        <button className={style.ModalBtn2} onClick={()=>setMonthCurrents(false)}>کل مخارج</button>
+                        <button className={style.ModalBtn1} onClick={() => setMonthCurrents(true)}>ماه جاری</button>
+                        <button className={style.ModalBtn2} onClick={() => setMonthCurrents(false)}>کل مخارج</button>
                     </div>
                 </Modal>
 
