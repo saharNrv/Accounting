@@ -1,0 +1,4 @@
+.noShowStock{
+
+    @apply bg-red-500 mx-4 my-10 p-5 text-center text-white rounded-md
+}

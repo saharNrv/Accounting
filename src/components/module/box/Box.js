@@ -15,12 +15,15 @@ function Box({ category, price, day, month, year, boxID,imgSrc }) {
                     <div className={style.boxInfo}>
                         <div className={style.boxTitleWrap}>
                             <p className={style.boxTitle}>{category}</p>
-                            <Image
+                            {
+                                imgSrc &&  <Image
                                 className={style.boxImg}
                                 src={`/icon/${imgSrc}.png`}
                                 width={50}
                                 height={50}
                             />
+                            }
+                           
                         </div>
                         <p className={style.boxDate}>{`${year}/${month}/${day}`}</p>
                     </div>

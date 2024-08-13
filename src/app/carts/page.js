@@ -10,6 +10,7 @@ import { Dictionary } from '../../../lib/dictionary';
 import Navbar from '@/components/module/navbar/Navbar';
 import { apiGetAccount } from '../../../api/account';
 import { apiGetAllBank } from '../../../api/bank';
+import NoShowStock from '@/components/module/noShowStock/NoShowStock';
 
 
 function Carts() {
@@ -47,7 +48,7 @@ function Carts() {
             {/*  cart component inclusive titile and cartnumber props  */}
 
             {
-                bankCarts.length > 0 && bankCarts.map((bankCart, index) => (
+                bankCarts.length > 0 ? bankCarts.map((bankCart, index) => (
 
                     <Cart
                         key={index}
@@ -57,7 +58,10 @@ function Carts() {
                         cartID={bankCart.ID}
                     />
 
-                ))
+                )):
+                (
+                    <NoShowStock title={'هیچ کارتی ثبت نشده'}/>
+                )
             }
 
         </>

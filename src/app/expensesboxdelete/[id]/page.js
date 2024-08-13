@@ -53,7 +53,7 @@ export default function Expensesboxdelete() {
     return (
         <>
             <Navbar />
-            <Topbar title={`${boxInfo.year}/${boxInfo.month}/${boxInfo.day}`} showBtn={true} linkBtnUrl={'/show-all-carts'} />
+            <Topbar title={(boxInfo.year && boxInfo.day &&boxInfo.month) && `${boxInfo.year}/${boxInfo.month}/${boxInfo.day}` } showBtn={true} linkBtnUrl={'/show-all-carts'} />
             <div className={style.expensesboxdelete}>
                 <div className={style.expensesboxdeleteInfon}>
                     <p className={style.expensesboxdeleteTitle}>مبلغ</p>
