@@ -3,10 +3,11 @@ import React from 'react';
 import style from './Topbar.module.css';
 import Link from 'next/link';
 import { FaArrowRight } from "react-icons/fa";
+import { useRouter } from 'next/navigation';
 
 
 export default function Topbar({ title, showBtn, linkBtnUrl }) {
-
+  const router = useRouter()
 
   return (
     <div className={style.topbar}>
@@ -15,9 +16,9 @@ export default function Topbar({ title, showBtn, linkBtnUrl }) {
       {
         showBtn ? (
           <div className={style.backBtn}>
-            <Link href={linkBtnUrl}>
+            <button className={style.btnBack} onClick={()=>router.back()}>
               <FaArrowRight />
-            </Link>
+            </button>
           </div>
         ) : (<></>)
       }

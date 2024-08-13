@@ -6,7 +6,6 @@ import Box from '@/components/module/box/Box';
 import Navbar from '@/components/module/navbar/Navbar';
 import { apiGetAllExpenses } from '../../../api/expenses';
 import { categoryName } from '../../../lib/string';
-import NoShowStock from '@/components/module/noShowStock/NoShowStock';
 
 export default function ShowAllCarts() {
 
@@ -36,12 +35,10 @@ export default function ShowAllCarts() {
 
         <div className={style.showallcart}>
           {
-            allExpenses.length >0 ? allExpenses.map((exp,index)=>(
+            allExpenses.length >0 && allExpenses.map((exp,index)=>(
 
               <Box category={categoryName(exp.category)} price={exp.amount.toLocaleString()} day={exp.day} month={exp.month} year={exp.year}  boxID={exp.ID} imgSrc={exp.bank_slug}/>
-            )) :(
-              <NoShowStock title={'هیچ مخارجی ثبت نشده'}/>
-            )
+            )) 
           }
          
         </div>

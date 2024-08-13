@@ -8,6 +8,7 @@ import { FaLock } from 'react-icons/fa';
 import { apiSignIn } from '../../../../api/account';
 import { AUTH_TOKEN_KEY } from '../../../../common/const';
 import { useRouter } from 'next/navigation';
+import Modal from '@/components/module/modal/Modal';
 
 
 export default function Login({ showRegisterForm }) {
@@ -15,6 +16,8 @@ export default function Login({ showRegisterForm }) {
 
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
+    const [showAlert, setShowAlert] = useState(false)
+    const [errorText, setErrorText] = useState('')
 
     const signinHandler = (event) => {
         event.preventDefault()
@@ -25,14 +28,28 @@ export default function Login({ showRegisterForm }) {
         }
 
         apiSignIn(inputSininUser)
-                 .then(res=>{
-                    if(res.result !==null){
-                        localStorage.setItem(AUTH_TOKEN_KEY,JSON.stringify(res.result))
-                         router.replace('/')
+            .then(res => {
+                if (res.result !== null) {
+                    localStorage.setItem(AUTH_TOKEN_KEY, JSON.stringify(res.result))
+                    router.replace('/')
+                } else if (res.errors) {
+                   setShowAlert(true)
+
+                    if (res.errors.includes('record not found')) {
+
+                        setErrorText('لطفا ثبت نام کنید')
+                        setUserName('')
+                        setPassword('')
+                    } else if (res.errors.includes('account not found or password error')) {
+                        setErrorText('رمز و شماره موبایل اشتباه است')
+                        setUserName('')
+                        setPassword('')
                     }
-                 })  
-                 .catch(err => console.log(err))
-               
+
+                }
+            })
+            .catch(err => console.log(err))
+
 
     }
 
@@ -78,6 +95,18 @@ export default function Login({ showRegisterForm }) {
                 <p className={style.registerPageTitle}>حساب کاربری ندارید؟</p>
                 <button onClick={showRegisterForm} className={style.registerPageBtn}>ایجاد کنید</button>
             </div>
+
+            {/*alert  */}
+
+            <Modal title={'کاربر گرامی'} show={showAlert} onClose={() => setShowAlert(false)}>
+                <p>
+                    {
+                        errorText
+                    }
+                </p>
+                <button className={style.btnModal} onClick={() => setShowAlert(false)}>تلاش مجدد</button>
+
+            </Modal>
         </>
     );
 }

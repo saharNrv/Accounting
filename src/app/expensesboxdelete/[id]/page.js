@@ -9,6 +9,7 @@ import Navbar from '@/components/module/navbar/Navbar';
 import { useParams, useRouter } from 'next/navigation';
 import { apiDeleteExpenses, apiGetExpensesID } from '../../../../api/expenses';
 import { categoryName } from '../../../../lib/string';
+import Image from 'next/image';
 
 export default function Expensesboxdelete() {
 
@@ -26,14 +27,14 @@ export default function Expensesboxdelete() {
         setShowModal(false)
     }
 
-    const deleteExpensesHandler = () =>{
+    const deleteExpensesHandler = () => {
         apiDeleteExpenses(id)
-               .then(res=>{
-                if(res.result !== null ){
+            .then(res => {
+                if (res.result !== null) {
                     router.replace('/show-all-carts')
                 }
-                
-               })
+
+            })
     }
 
     useEffect(() => {
@@ -53,16 +54,16 @@ export default function Expensesboxdelete() {
     return (
         <>
             <Navbar />
-            <Topbar title={(boxInfo.year && boxInfo.day &&boxInfo.month) && `${boxInfo.year}/${boxInfo.month}/${boxInfo.day}` } showBtn={true} linkBtnUrl={'/show-all-carts'} />
+            <Topbar title={(boxInfo.year && boxInfo.day && boxInfo.month) && `${boxInfo.year}/${boxInfo.month}/${boxInfo.day}`} showBtn={true} linkBtnUrl={'/show-all-carts'} />
             <div className={style.expensesboxdelete}>
                 <div className={style.expensesboxdeleteInfon}>
                     <p className={style.expensesboxdeleteTitle}>مبلغ</p>
-                    <p className={style.ExpensesboxdeletePrice}>{boxInfo.amount} تومان</p>
+                    <p className={style.ExpensesboxdeletePrice}>{boxInfo.amount ?? 0} تومان</p>
                 </div>
                 <div className={style.expensesboxdeleteInfon}>
                     <p className={style.expensesboxdeleteTitle}>دسته بندی</p>
                     <p className={style.expensesboxdeleteGroup}>
-                        <span>{categoryName(boxInfo.category)}</span>
+                        <span>{ boxInfo.category ? categoryName(boxInfo.category) : 'دسته بندی ' }</span>
                         <FaBoxOpen />
                     </p>
                 </div>
@@ -70,7 +71,15 @@ export default function Expensesboxdelete() {
                     <p className={style.expensesboxdeleteTitle}>کارت</p>
                     <p className={style.expensesboxdeleteImgWrap}>
                         <span>{boxInfo.bank_name === '' ? '' : boxInfo.bank_name}</span>
-                        <img className={style.expensesboxdeleteImg} src="https://jackblack.ir/wp-content/uploads/2021/06/blu-99-09-18-1.jpg" alt="img" />
+                        {
+                            boxInfo.bank_slug && <Image
+                                className={style.expensesboxdeleteImg}
+                                src={`/icon/${boxInfo.bank_slug}.png`}
+                                width={50}
+                                height={50}
+                            />
+                        }
+                       
                     </p>
                 </div>
 
@@ -86,7 +95,7 @@ export default function Expensesboxdelete() {
 
                 <div className={style.expensesboxdeleteModalBtn}>
                     <button className={style.expensesboxdeleteModalBtn1} onClick={deleteExpensesHandler}>حذف</button>
-                    <button className={style.expensesboxdeleteModalBtn2} onClick={()=>setShowModal(false)}>خیر</button>
+                    <button className={style.expensesboxdeleteModalBtn2} onClick={() => setShowModal(false)}>خیر</button>
                 </div>
 
             </Modal>

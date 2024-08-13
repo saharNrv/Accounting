@@ -47,7 +47,7 @@ const dictionaryList = {
 
 export const Translate = (key) => {
     const state = storedLocalizationState()
-    const dict = JSON.parse(JSON.stringify(dictionaryList[state.local]))
+    const dict = JSON.parse(JSON.stringify(dictionaryList[state.local] ?? {}))
 
     if (dict) {
         return dict[key] || key

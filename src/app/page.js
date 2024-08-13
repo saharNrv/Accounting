@@ -12,7 +12,6 @@ import { apiGetAccount } from '../../api/account';
 import { apiGetAllExpenses } from '../../api/expenses';
 import { categoryName, getDate } from '../../lib/string';
 import { getAllPrice } from '../../lib/number';
-import NoShowStock from '@/components/module/noShowStock/NoShowStock';
 
 export default function Page() {
 
@@ -84,7 +83,7 @@ export default function Page() {
             </div>
             <div className={style.homeBox}>
                 {
-                    allExpenses.length > 0 ? allExpenses.map((exp, index) => (
+                    allExpenses.length > 0 && allExpenses.map((exp, index) => (
 
                         <>
                             {index < 5 && <Box
@@ -99,9 +98,7 @@ export default function Page() {
                             }
                         </>
 
-                    )):(
-                        <NoShowStock title={'هیچ مخارجی ثبت نشده'}/>
-                    )
+                    ))
                 }
 
 

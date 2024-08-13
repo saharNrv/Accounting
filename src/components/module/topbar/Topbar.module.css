@@ -15,9 +15,7 @@
    @apply rounded-full  flex items-center justify-center
    
   }
-  .backBtn a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    @apply text-steel-blue-900
+
+  .btnBack{
+    @apply bg-inherit border-none flex items-center justify-center text-slate-900
   }

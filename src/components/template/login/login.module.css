@@ -48,3 +48,7 @@
 .registerPageBtn{
     @apply text-blue-500 bg-inherit border-none
 }
+
+.btnModal{
+    @apply w-full bg-steel-blue-500 text-white border-none rounded-md p-3 mt-3
+}
