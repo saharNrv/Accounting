@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import style from '@/styles/LoginRegister.module.css'
-import { FaSackDollar } from "react-icons/fa6";
+import { LiaCoinsSolid } from "react-icons/lia";
 import Login from '@/components/template/login/Login';
 import Register from '@/components/template/register/Register';
 
@@ -17,10 +17,10 @@ export default function LoginRegister() {
       {/* login topbar */}
       <div className={style.loginTopbr}>
         <h2 className={style.loginTitleWrap}>
-          <FaSackDollar />
-          <span className={style.loginTitle}>خرجام</span>
+          <LiaCoinsSolid />
+          <span className={style.loginTitle}>حسابتو</span>
         </h2>
-        <p className={style.subTitle}>نرم افزار مدیریت مخارج شخصی</p>
+        <p className={style.subTitle}>نرم افزار حسابداری تو</p>
 
       </div>
       {

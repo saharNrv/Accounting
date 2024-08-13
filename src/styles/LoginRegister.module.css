@@ -1,5 +1,5 @@
 .loginTopbr{
-    @apply h-[180px] bg-steel-blue-600 flex  rounded-b-3xl flex-col items-center justify-center  text-white gap-2
+    @apply h-[180px] m-5 bg-steel-blue-600 flex shadow-md shadow-blue-400  rounded-3xl flex-col items-center justify-center  text-white gap-2
 }
 .loginTitleWrap{
   
