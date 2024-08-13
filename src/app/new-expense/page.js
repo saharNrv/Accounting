@@ -14,7 +14,6 @@ import { categoryName, getDate } from '../../../lib/string';
 import { useRouter } from 'next/navigation';
 
 export default function NewExpense() {
-
     // state
     const router = useRouter()
     const [account, setAccount] = useState([])
@@ -52,6 +51,7 @@ export default function NewExpense() {
     }
 
     const choiceCartHandler = (info) => {
+        console.log(info);
         
         setInfoCart(info)
         setShowModalCartBank(false)
@@ -75,7 +75,8 @@ export default function NewExpense() {
             bank_number: infoCart.bank_number,
             category: category,
             date:date,
-            note: note
+            note: note,
+            bank_slug:infoCart.bank_slug
         }
 
         

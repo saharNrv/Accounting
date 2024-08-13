@@ -93,6 +93,7 @@ export default function Page() {
                                 year={exp.year}
                                 price={exp.amount.toLocaleString()}
                                 boxID={exp.ID}
+                                imgSrc={exp.bank_slug}
                             />
                             }
                         </>

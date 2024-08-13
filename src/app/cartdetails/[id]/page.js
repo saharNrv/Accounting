@@ -158,6 +158,7 @@ export default function CartDetails() {
                             month={exp.month}
                             year={exp.year}
                             boxID={exp.ID}
+                            imgSrc={exp.bank_slug}
 
                         />
                     )))
