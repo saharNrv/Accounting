@@ -40,7 +40,7 @@ function Carts() {
                     </Link>
                 </div>
                 <div className={style.cartsLeft}>
-                    <h2 className={style.cartsTitle}>{Translate(Dictionary.YOUR_CART)}</h2>
+                    <h2 className={style.cartsTitle}>کارت های شما</h2>
                 </div>
 
             </div>

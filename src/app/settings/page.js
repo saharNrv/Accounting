@@ -152,13 +152,8 @@ export default function Settings() {
                 {/* setting program */}
                 <div className={style.settingUser}>
                     <p className={style.settingUserTitle}>تنظیمات برنامه</p>
-                    <Link href={'/'} className={style.settingUserLink}>
-                        <div className={style.settingUserIconWrap}>
-                            <FaEuroSign />
-                            <p className={style.settingUserIconText}>واحد پولی</p>
-                        </div>
-                        <IoIosArrowBack />
-                    </Link>
+                   
+                  
                     <Link href={''} onClick={showLanguageModalHandler} className={style.settingUserLink}>
                         <div className={style.settingUserIconWrap}>
                             <MdLanguage />

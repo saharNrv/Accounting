@@ -60,7 +60,7 @@ export default function Page() {
                     {/* home navbar left */}
                     <div className={style.homeNavLeft}>
                         <div className={style.homeNavLeftIconWrap}>
-                            <Link href={'/'}>
+                            <Link href={'/charts'}>
                                 <FaChartPie />
                             </Link>
                             <Link href={'/settings'}>
@@ -72,7 +72,7 @@ export default function Page() {
                 </div>
                 {/* home navbar price */}
                 <div className={style.homeNavPricce}>
-                    <h1>{allExpenses.length > 0 && getAllPrice(allExpenses).toLocaleString() } تومان</h1>
+                    <h1>{allExpenses.length > 0 ? getAllPrice(allExpenses).toLocaleString() : 0 } تومان</h1>
                 </div>
 
             </div>

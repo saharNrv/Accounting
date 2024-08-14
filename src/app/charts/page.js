@@ -67,7 +67,7 @@ const Chart = () => {
 
     return (
         <section>
-            <Topbar title="گزارشات" />
+            <Topbar title="گزارشات" showBtn={true} />
             <div className={style.button_container}>
                 <label>نوع گزارش</label>
                 <button className={style.button} onClick={() => setShowModal(true)}>
@@ -132,13 +132,14 @@ const Chart = () => {
                         </div>
                     </div>
                 )}
+                <button
+                    className={`${style.button} ${style.button_report} ${style.btnMargin}`}
+                    onClick={getReportHandler}
+                >
+                    دریافت گزارش
+                </button>
             </div>
-            <button
-                className={`${style.button} ${style.button_report} ${style.btnMargin}`}
-                onClick={getReportHandler}
-            >
-                دریافت گزارش
-            </button>
+
 
             <div className={style.chart_container}>
                 {!!exp && exp.length > 0 && isMonthly && (

@@ -31,7 +31,7 @@
 
 .settingUserIconWrap {
   
-  @apply flex items-center gap-2
+  @apply flex items-center gap-2 
 }
 .settingUserIconText{
     color: #5e5d5d;

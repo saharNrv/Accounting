@@ -41,7 +41,7 @@ export default function Login({ showRegisterForm }) {
                         setUserName('')
                         setPassword('')
                     } else if (res.errors.includes('account not found or password error')) {
-                        setErrorText('رمز و شماره موبایل اشتباه است')
+                        setErrorText('رمز یا شماره موبایل اشتباه است')
                         setUserName('')
                         setPassword('')
                     }
