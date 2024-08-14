@@ -4,12 +4,34 @@ import style from '@/styles/Edit-password.module.css'
 import Topbar from '@/components/module/topbar/Topbar';
 import Input from '@/components/module/inputwrap/Input';
 import Navbar from '@/components/module/navbar/Navbar';
+import { apiChangePassword } from '../../../api/account';
+import { useRouter } from 'next/navigation';
+
 
 export default function EditPassword() {
-
+    const router = useRouter()
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [repeatPassword, setRepeatPassword] = useState('')
+
+    const changePassword = (event)=>{
+        event.preventDefault()
+
+        const newPass={
+            new_password:newPassword,
+            retry_password:repeatPassword
+        }
+
+        apiChangePassword(newPass)
+                 .then(res=>{
+                   
+                    if(res.result !== null){
+                       router.back()
+                    }
+                    
+                 })
+
+    }
 
     return (
         <>
@@ -37,7 +59,7 @@ export default function EditPassword() {
                     />
                     <div className={style.formBtn}>
 
-                        <button >تایید</button>
+                        <button onClick={changePassword}>تایید</button>
                     </div>
 
                 </form>

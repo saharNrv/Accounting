@@ -25,3 +25,11 @@ export const apiChangeName = async (input) => {
 
   return response.data
 }
+
+export const apiChangePassword = async (input) => {
+
+  const response = await AxiosBaseRequest().patch(`${baseURL}/change_password`, input)
+
+  return response.data
+
+}
