@@ -10,7 +10,7 @@ import { apiGetAccount } from '../../../api/account';
 import Image from 'next/image';
 import { date2Timestamp } from '../../../lib/date';
 import { apiPostExpenses } from '../../../api/expenses';
-import { categoryName, getDate } from '../../../lib/string';
+import { categoryName, getDate, replaceFaNum2EnNum } from '../../../lib/string';
 import { useRouter } from 'next/navigation';
 
 export default function NewExpense() {
@@ -24,15 +24,15 @@ export default function NewExpense() {
     const [category, setCategory] = useState('')
     const [note, setNote] = useState('')
     const [showModalCartBank, setShowModalCartBank] = useState(false)
-    const [showModalDate, setShowModalDate] =useState(false)
-    const [showModalCategory, setShowModalCategory] =useState(false)
+    const [showModalDate, setShowModalDate] = useState(false)
+    const [showModalCategory, setShowModalCategory] = useState(false)
 
     const [date, setDate] = useState({
-        day:0,
-        month:0,
-        year:0,
-        hour:0,
-        minute:0
+        day: 0,
+        month: 0,
+        year: 0,
+        hour: 0,
+        minute: 0
     })
 
 
@@ -47,24 +47,24 @@ export default function NewExpense() {
         setShowModalCartBank(false)
         setShowModalDate(false)
         setShowModalCategory(false)
-        
+
     }
 
     const choiceCartHandler = (info) => {
         console.log(info);
-        
+
         setInfoCart(info)
         setShowModalCartBank(false)
 
 
     }
 
-   const changeCategory = (categoryValue) =>{
-      
-    setCategory(categoryValue)
-    setShowModalCategory(false)
+    const changeCategory = (categoryValue) => {
 
-   }
+        setCategory(categoryValue)
+        setShowModalCategory(false)
+
+    }
 
     const submitNewExpensesHandler = () => {
 
@@ -74,16 +74,16 @@ export default function NewExpense() {
             bank_name: infoCart.name,
             bank_number: infoCart.bank_number,
             category: category,
-            date:date,
+            date: date,
             note: note,
-            bank_slug:infoCart.bank_slug
+            bank_slug: infoCart.bank_slug
         }
 
-        
+
 
         apiPostExpenses(newExpenses)
             .then(res => {
-                if(res.result !== null){
+                if (res.result !== null) {
                     router.replace('/')
                 }
             })
@@ -98,7 +98,7 @@ export default function NewExpense() {
     useEffect(() => {
         apiGetAccount()
             .then(res => {
-               
+
                 if (res.result !== null) {
                     setAccount(res.result.bank_account)
 
@@ -119,7 +119,7 @@ export default function NewExpense() {
                     <p className={style.newexpenseBtnSubTitle}>دسته بندی</p>
                     <div className={style.newexpenseBtnContent}>
 
-                        <button className={style.newexpenseBtn} onClick={()=>setShowModalCategory(true)}>
+                        <button className={style.newexpenseBtn} onClick={() => setShowModalCategory(true)}>
                             <span className={style.newexpenseBtnTitle}>
                                 {categoryName(category)}
                             </span>
@@ -133,7 +133,7 @@ export default function NewExpense() {
                     <p className={style.newexpenseBtnSubTitle}>تاریخ و زمان</p>
                     <div className={style.newexpenseBtnContent}>
 
-                        <button className={style.newexpenseBtn} onClick={()=>setShowModalDate(true)}>
+                        <button className={style.newexpenseBtn} onClick={() => setShowModalDate(true)}>
                             <span className={style.newexpenseBtnTitle}>
                                 {
                                     getDate(date)
@@ -214,18 +214,18 @@ export default function NewExpense() {
                 <div className={style.dateWrapper}>
                     <div className={style.dateWrapperInput}>
 
-                    <input type="text" placeholder='روز' maxLength={2} onChange={(event)=>setDate({
-                        ...date,
-                        day:+event.target.value
-                    })} className={style.dateInput} />
-                    <input type="text" placeholder='ماه' maxLength={2} onChange={(event)=>setDate({
-                        ...date,
-                        month:+event.target.value
-                    })} className={style.dateInput}/>
-                    <input type="text" placeholder='سال' maxLength={4} onChange={(event)=>setDate({
-                        ...date,
-                        year:+event.target.value
-                    })} className={style.dateInput}/>
+                        <input type="text" placeholder='روز' maxLength={2} onChange={(event) => setDate({
+                            ...date,
+                            day: +replaceFaNum2EnNum(event.target.value)
+                        })} className={style.dateInput} />
+                        <input type="text" placeholder='ماه' maxLength={2} onChange={(event) => setDate({
+                            ...date,
+                            month: +replaceFaNum2EnNum(event.target.value)
+                        })} className={style.dateInput} />
+                        <input type="text" placeholder='سال' maxLength={4} onChange={(event) => setDate({
+                            ...date,
+                            year: +replaceFaNum2EnNum(event.target.value)
+                        })} className={style.dateInput} />
                     </div>
 
                     <button onClick={closeModalHandler} className={style.dateBtn}>تایید</button>
@@ -233,22 +233,22 @@ export default function NewExpense() {
 
             </Modal>
 
-           {/* choice for category  */}
+            {/* choice for category  */}
 
-           <Modal title={'دسته بندی را انتخاب کنید'} show={showModalCategory} onClose={closeModalHandler} >
+            <Modal title={'دسته بندی را انتخاب کنید'} show={showModalCategory} onClose={closeModalHandler} >
 
                 <div className={style.categoryWrap}>
-                    <button className={style.categoryBtn} onClick={()=>changeCategory("Food")}>غذا</button>
-                    <button className={style.categoryBtn} onClick={()=>changeCategory("Transport")}>سفر</button>
-                    <button className={style.categoryBtn} onClick={()=>changeCategory("Entertainment")}>سرگرمی</button>
-                    <button className={style.categoryBtn} onClick={()=>changeCategory("Health")}>سلامتی</button>
-                    <button className={style.categoryBtn} onClick={()=>changeCategory("Education")}>تحصیل</button>
-                    <button className={style.categoryBtn} onClick={()=>changeCategory("Shopping")}>خرید</button>
-                    <button className={style.categoryBtn} onClick={()=>changeCategory("Other")}>سایر</button>
+                    <button className={style.categoryBtn} onClick={() => changeCategory("Food")}>غذا</button>
+                    <button className={style.categoryBtn} onClick={() => changeCategory("Transport")}>سفر</button>
+                    <button className={style.categoryBtn} onClick={() => changeCategory("Entertainment")}>سرگرمی</button>
+                    <button className={style.categoryBtn} onClick={() => changeCategory("Health")}>سلامتی</button>
+                    <button className={style.categoryBtn} onClick={() => changeCategory("Education")}>تحصیل</button>
+                    <button className={style.categoryBtn} onClick={() => changeCategory("Shopping")}>خرید</button>
+                    <button className={style.categoryBtn} onClick={() => changeCategory("Other")}>سایر</button>
                 </div>
 
-           </Modal>
-            
+            </Modal>
+
         </div>
     );
 }

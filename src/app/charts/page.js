@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Modal from "../../components/module/modal/Modal";
 import Topbar from "../../components/module/topbar/Topbar";
-import style from "../../styles/chart.module.css";
+import style from "./Chart.module.css";
 import { TiArrowUnsorted } from "react-icons/ti";
 import { getMonthlyName, getPersianMonth } from "../../../lib/date";
 import { apiGetMonthExpenses, apiPeriodTime } from "../../../api/expenses";
@@ -319,6 +319,7 @@ const Chart = () => {
                     </select> */}
                     <input
                         maxLength={4}
+                        placeholder="شروع از"
                         className={style.input}
                         type="text"
                         onChange={(event) =>
@@ -353,6 +354,7 @@ const Chart = () => {
                     </select> */}
                     <input
                         maxLength={4}
+                        placeholder="تا زمان"
                         className={style.input}
                         type="text"
                         onChange={(event) =>

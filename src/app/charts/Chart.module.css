@@ -45,8 +45,12 @@
 }
 
 .input {
-  @apply w-full bg-slate-200 rounded-md outline-none;
+  @apply w-full bg-slate-200 rounded-md outline-none p-3 mt-3;
 }
+
 .chartTitle {
   margin: 20px;
+  padding: 15px;
 }
+
+
