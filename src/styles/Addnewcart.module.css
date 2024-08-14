@@ -41,7 +41,7 @@ padding: 5px;
 }
 
 .gridContainer {
-  @apply grid grid-cols-2 gap-2;
+  @apply grid grid-cols-2 gap-3 overflow-y-scroll h-[400px] p-5;
 }
 
 .gridContainer button {
