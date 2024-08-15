@@ -13,25 +13,26 @@
   color: #555;
 }
 
-.modalList li{
-    margin-bottom: 10px;
+.modalList li {
+  margin-bottom: 10px;
 }
 
-.modalBtn{
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-   margin-top:12px ;
-    @apply bg-steel-blue-600 text-white
+.modalBtn {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 12px;
+  @apply bg-steel-blue-600 text-white;
 }
 
-.androidTitle{
+.androidContent {
+  @apply flex items-center justify-center;
+}
+.androidTitle {
   color: #555;
- margin-top: 20px;
- margin-right: 10px;
+ 
 }
-.androidLink{
-  @apply text-steel-blue-600 underline mr-[10px]
-
+.androidLink {
+  @apply text-steel-blue-600 underline mr-[10px];
 }

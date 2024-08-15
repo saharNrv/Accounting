@@ -65,8 +65,8 @@ export default function LoginRegister() {
               <button onClick={() => setShowModal(false)} className={style.modalBtn}>متوجه شدم</button>
             </div>
           ) : (
-            <div>
-              <p className={style.androidTitle}>برای دانلود اپلیکیشن اندروید کلیک کنید</p>
+            <div className={style.androidContent}>
+              <p className={style.androidTitle}>برای دانلود اپلیکیشن اندروید </p>
               <Link className={style.androidLink} href={"https://hesabeto-app.s3.ir-tbz-sh1.arvanstorage.ir/Hesabeto.apk?versionId="}>
                 کلیک کنید
               </Link>
