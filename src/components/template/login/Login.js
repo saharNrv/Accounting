@@ -68,11 +68,13 @@ export default function Login({ showRegisterForm }) {
                         placeholder={'شماره موبایل یا ادرس ایمیل خود را وارد کنید'}
                         value={userName}
                         onChange={(value) => setUserName(value)}
+                        type={"text"}
                     />
                     <Input
                         title={'رمز عبور'}
                         placeholder={'رمز عبور خود را وارد کنید'}
                         value={password}
+                        type={'password'}
                         onChange={(value) => setPassword(value)}
                     />
                     <div className={style.loginBtnWrap}>

@@ -113,7 +113,7 @@ export default function NewExpense() {
             <Navbar />
             <Topbar title={'ایجاد خرج جدید'} showBtn={false} />
             <div className={style.newexpense} >
-                <Input title={'مبلغ'} placeholder={'2000 تومان'} value={price} onChange={(value) => setPrice(value)} />
+                <Input title={'مبلغ'} placeholder={'2000 تومان'} value={price} type={'number'} onChange={(value) => setPrice(value)} />
 
                 <div className={style.newexpenseBtnWrap}>
                     <p className={style.newexpenseBtnSubTitle}>دسته بندی</p>

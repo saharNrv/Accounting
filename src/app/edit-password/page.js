@@ -44,18 +44,21 @@ export default function EditPassword() {
                         placeholder={'رمز عبور فعلی خود را وارد کنید'}
                         value={oldPassword}
                         onChange={(value)=>setOldPassword(value)}
+                        type={"text"}
                     />
                     <Input
                         title={'رمز عبور جدید'}
                         placeholder={'رمز عبور جدید خود را وارد کنید'}
                         value={newPassword}
                         onChange={(value)=>setNewPassword(value)}
+                        type={"text"}
                     />
                     <Input
                         title={'تکرار رمز عبور جدید'}
                         placeholder={'رمز عبور جدید خود را تکرار کنید'}
                         value={repeatPassword}
                         onChange={(value)=>setRepeatPassword(value)}
+                        type={"text"}
                     />
                     <div className={style.formBtn}>
 

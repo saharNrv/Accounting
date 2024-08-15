@@ -4,9 +4,15 @@ import style from '@/styles/LoginRegister.module.css'
 import { LiaCoinsSolid } from "react-icons/lia";
 import Login from '@/components/template/login/Login';
 import Register from '@/components/template/register/Register';
+import Modal from '@/components/module/modal/Modal';
+import { MdIosShare } from "react-icons/md";
+import { CgAddR } from "react-icons/cg";
+import Link from 'next/link';
 
 export default function LoginRegister() {
-  const [authType, setAuthType]=useState('login')
+
+  const [showModal, setShowModal] = useState(true)
+  const [authType, setAuthType] = useState('login')
   // show register page
   const showRegisterForm = () => setAuthType('register');
   // show login page
@@ -24,14 +30,52 @@ export default function LoginRegister() {
 
       </div>
       {
-        authType === 'login'?(
-          
-          <Login showRegisterForm={showRegisterForm}/> 
-        ):(
+        authType === 'login' ? (
 
-          <Register showloginForm={showloginForm}/>
+          <Login showRegisterForm={showRegisterForm} />
+        ) : (
+
+          <Register showloginForm={showloginForm} />
         )
       }
+
+      <Modal title={'وب اپلیکیشن حسابتو را به صفحه اصلی گوشی تان اضافه کنید '} show={showModal} onClose={() => setShowModal(false)}>
+
+        {
+          window.navigator.userAgent.includes('iPhone') ? (
+
+            <div className={style.modalContent}>
+              <ul className={style.modalList}>
+                <li>
+                  ۱. در نوار پایین دکمه
+                  <MdIosShare />
+                  «Share» را انتخاب کنید.
+                </li>
+                <li>
+                  ۲.
+                  در منو باز شده، گزینه ,
+                  <CgAddR />
+                  «Add to home screen»
+                  را انتخاب کنید
+                </li>
+                <li>
+                  ۳. در مرحله بعد “Add” را انتخاب کنید
+                </li>
+              </ul>
+              <button onClick={() => setShowModal(false)} className={style.modalBtn}>متوجه شدم</button>
+            </div>
+          ) : (
+            <div>
+              <p className={style.androidTitle}>برای دانلود اپلیکیشن اندروید کلیک کنید</p>
+              <Link className={style.androidLink} href={"https://hesabeto-app.s3.ir-tbz-sh1.arvanstorage.ir/Hesabeto.apk?versionId="}>
+                کلیک کنید
+              </Link>
+            </div>
+
+          )
+        }
+
+      </Modal>
 
     </div>
   );

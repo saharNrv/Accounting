@@ -1,8 +1,37 @@
-.loginTopbr{
-    @apply h-[180px] m-5 bg-steel-blue-600 flex shadow-md shadow-blue-400  rounded-3xl flex-col items-center justify-center  text-white gap-2
+.loginTopbr {
+  @apply h-[180px] m-5 bg-steel-blue-600 flex shadow-md shadow-blue-400  rounded-3xl flex-col items-center justify-center  text-white gap-2;
 }
-.loginTitleWrap{
-  
-    @apply flex items-center gap-1
+.loginTitleWrap {
+  @apply flex items-center gap-1;
 }
 
+.modalContent {
+}
+.modalList {
+  list-style-type: none;
+  margin: 10px;
+  color: #555;
+}
+
+.modalList li{
+    margin-bottom: 10px;
+}
+
+.modalBtn{
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+   margin-top:12px ;
+    @apply bg-steel-blue-600 text-white
+}
+
+.androidTitle{
+  color: #555;
+ margin-top: 20px;
+ margin-right: 10px;
+}
+.androidLink{
+  @apply text-steel-blue-600 underline mr-[10px]
+
+}

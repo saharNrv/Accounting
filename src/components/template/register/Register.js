@@ -61,12 +61,14 @@ export default function Register({ showloginForm }) {
                         placeholder={'شماره موبایل یا ادرس ایمیل خود را وارد کنید'}
                         onChange={(value) => setMobile(value)}
                         value={mobile}
+                        type={'text'}
                     />
                     <Input
                         title={'رمز عبور'}
                         placeholder={'رمز عبور خود را وارد کنید'}
                         onChange={(value) => setPass(value)}
                         value={pass}
+                        type={'password'}
 
                     />
                     <Input
@@ -74,6 +76,7 @@ export default function Register({ showloginForm }) {
                         placeholder={'رمز عبور خود را تکرار کنید'}
                         onChange={(value) => setRetryPass(value)}
                         value={retryPass}
+                        type={'password'}
                     />
                     <div className={style.loginBtnWrap}>
                         <button onClick={signupHandler} className={style.loginBtn}>

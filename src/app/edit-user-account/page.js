@@ -11,21 +11,21 @@ export default function EditUserAccount() {
     const router = useRouter()
 
     const [userName, setUserName] = useState('')
-  
 
-    const changeNameHandler = (event)=>{
+
+    const changeNameHandler = (event) => {
         event.preventDefault()
         const changeInputUserName = {
-            full_name:userName
+            full_name: userName
         }
 
 
         apiChangeName(changeInputUserName)
-                  .then(res=>{
-                    if(res.result !== null){
-                        router.replace('/')
-                    }
-                  })
+            .then(res => {
+                if (res.result !== null) {
+                    router.replace('/')
+                }
+            })
     }
 
     return (
@@ -38,7 +38,8 @@ export default function EditUserAccount() {
                         title={'نام و نام خانوادگی'}
                         placeholder={'نام و نام خانوادگی وارد کنید'}
                         value={userName}
-                        onChange={(value)=>setUserName(value)}
+                        onChange={(value) => setUserName(value)}
+                        type={"text"}
                     />
                     {/* <Input
                         title={'آدرس ایمیل'}

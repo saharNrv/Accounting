@@ -95,13 +95,14 @@ export default function AddNewCart() {
                         placeholder={'شماره کارت را وارد کنید'}
                         value={cartNumber}
                         onChange={(value) => setCartNumber(value)}
-
+                         type={"text"}
                     />
                     <Input
                         title={'نام'}
                         placeholder={'نام کارت را وارد کنید'}
                         value={cartName}
                         onChange={(value) => setCartName(value)}
+                        type={"text"}
                     />
 
                     <div className={style.formBtn}>
